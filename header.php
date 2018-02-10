@@ -117,6 +117,7 @@
 				</div>
 			</div>
 		</section>
+		<?php if ( is_front_page() ): ?>
 		<section class="hero-area position-relative">
 			<div class="container-fluid">
 				<div class="hero-content">
@@ -128,4 +129,5 @@
 			</div>
 			<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" class="img-fluid">
 		</section>
+		<?php endif; ?>
 	</header><!-- #masthead -->

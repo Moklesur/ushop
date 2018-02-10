@@ -1,23 +1,8 @@
 ( function( $ ) {
 	$(document).on('panelsopen', function(e) {
-		$(".featured-posts-dropdown").chosen({
-			disable_search_threshold: 5,
-			max_selected_options: 5
-		});
-		$(".chosen-dropdown-3").chosen({
-			disable_search_threshold: 10,
-			max_selected_options: 3
-		});
-		$(".category-posts-dropdown-a,.author-dropdown").chosen({
-			disable_search_threshold: 10,
-			max_selected_options: 1
-		});
 
-		$(".trending-posts-dropdown").chosen({
-			disable_search_threshold: 10
-		});
+		$(".trending-posts-dropdown").chosen();
 
-		$('.trending-posts-Sortable').chosenSortable();
 	});
 	if ( ( '.ushop_services_image_btn' ).length ){
 		function media_upload(button_class) {

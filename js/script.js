@@ -22,14 +22,75 @@
                 }, 700);
             });
         }
+        //masonry
+        
+        if ( $(".category-filter").length ){
+            var $container = $('.category-filter .products');
+            $container.isotope({
+                filter: '*',
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+
+            $('.category-filter-wrap a').click(function(){
+                $('.category-filter-wrap .current').removeClass('current');
+                $(this).addClass('current');
+
+                var selector = $(this).attr('data-filter');
+                $container.isotope({
+                    filter: selector,
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false
+                    }
+                });
+                return false;
+            });
+        }
         //Treading Products
-        if ( ( '.trending-products-contents > .woocommerce > ul' ).length ){
-            $( '.trending-products-contents > .woocommerce > ul' ).each( function() {
-                $('.trending-products-contents > .woocommerce > ul').slick({
+        if ( ( '.treading-products' ).length ){
+            $(".treading-products .products").replaceWith($("<div class=\"products\">" + $(".treading-products .products")[0].innerHTML + "</div>"));
+            $(".treading-products .products > li").each(function(){
+                $(this).replaceWith($("<div>" + this.innerHTML + "</div>"))
+            });
+            $( '.treading-products .products' ).each( function() {
+                $('.treading-products .products').slick({
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    autoplay: true,
+                    autoplay: false,
+                    centerMode: true,
+                    nextArrow: '<i class="ion-ios-arrow-right f-2x"></i>',
+                    prevArrow: '<i class="ion-ios-arrow-left f-2x"></i>',
                     autoplaySpeed: 2000,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                infinite: true,
+                                dots: true
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
                 });
             });
         }

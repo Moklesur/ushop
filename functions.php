@@ -114,6 +114,8 @@ function ushop_widgets_init() {
 	// Register Widgets
 	register_widget( 'uShop_Widget_Services' );
 	register_widget( 'uShop_Widget_Trending_Products' );
+	register_widget( 'uShop_Widget_Category_Filter' );
+	register_widget( 'uShop_Widget_Category_List' );
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
 
@@ -122,6 +124,8 @@ add_action( 'widgets_init', 'ushop_widgets_init' );
  */
 require get_template_directory() . '/inc/widgets/widget-services.php';
 require get_template_directory() . '/inc/widgets/widget-treading-products.php';
+require get_template_directory() . '/inc/widgets/widget-category-filter.php';
+require get_template_directory() . '/inc/widgets/widget-category-list.php';
 require get_template_directory() . '/inc/widgets/widgets.php';
 /**
  * Load Site Origin Bundle
@@ -164,6 +168,7 @@ function ushop_scripts() {
 
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.8.0', true );
 	wp_enqueue_script( 'popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.5', true );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/isotope.pkgd.js', array('jquery'), '3.0.4', true );
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
 	wp_enqueue_script( 'ushop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true );
 

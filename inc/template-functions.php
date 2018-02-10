@@ -16,6 +16,9 @@ function ushop_body_classes( $classes ) {
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
+	if ( is_woocommerce() || is_cart() ){
+		$classes[] = 'woo-btn-hover-pages';
+	}
 
 	return $classes;
 }

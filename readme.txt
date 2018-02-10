@@ -63,5 +63,10 @@ Primary
   Author: Ken Wheeler
   Website: http://kenwheeler.github.io
 
+* Isotope PACKAGED v3.0.4
+  http://isotope.metafizzy.co
+  Copyright 2017 Metafizzy
+  Licensed GPLv3 for open source use
+
 * Image (used in screenshot)
 https://www.pexels.com/photo/adolescent-casual-cute-elegant-428338/
