@@ -13,7 +13,12 @@
 <footer id="colophon" class="site-footer">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-12">
+			<div class="col-lg-12 col-md-12 col-12 text-center">
+				<?php if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
+					<div class="footer-widgets-content">
+						<?php dynamic_sidebar( 'footer-bottom' ); ?>
+					</div>
+				<?php endif; ?>
 				<div class="site-info">
 					<a href="<?php echo esc_url( __( 'https://www.themetim.com/', 'ushop' ) ); ?>">
 						<?php

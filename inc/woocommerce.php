@@ -1,32 +1,25 @@
 <?php
-
 /**
- * Removed breadcrumbs
+ * Add and remove actions
  */
-add_action( 'init', 'ushop_remove_wc_breadcrumbs' );
-function ushop_remove_wc_breadcrumbs() {
-    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+function leto_woocommerce_actions() {
+    //Remove all WC styling
+    add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
+add_action( 'wp', 'leto_woocommerce_actions' );
 
-/**
- * ushop_hide_page_title
- *
- * Removes the "shop" title on the main shop page
- */
-add_filter( 'woocommerce_show_page_title' , 'ushop_hide_page_title' );
-function ushop_hide_page_title() {
-    return false;
-}
 
-/**
- * Change number or products per row to 3
- */
-add_filter('loop_shop_columns', 'ushop_loop_columns');
-if (!function_exists('ushop_loop_columns')) {
-    function ushop_loop_columns() {
-        return 3; // 3 products per row
+// add product category name to post class
+function category_id_class( $classes ) {
+    global $post;
+    $product_cats = get_the_terms( $post->ID, 'product_cat' );
+    if( $product_cats ) foreach ( $product_cats as $category ) {
+        $classes[] = 'ggggggggggggggg';
     }
+    return $classes;
 }
+add_filter( 'post_class', 'category_id_class' );
+
 
 /**
  * Opening div for our content wrapper
@@ -44,16 +37,6 @@ add_action('woocommerce_after_main_content', 'ushop_close_div', 50);
 
 function ushop_close_div() {
     echo '</div>';
-}
-
-/**
- * Related Product Columns
- */
-add_filter( 'woocommerce_output_related_products_args', 'ushop_related_products_args' );
-function ushop_related_products_args( $args ) {
-    $args['posts_per_page'] = 3; // 4 related products
-    $args['columns'] = 3; // arranged in 2 columns
-    return $args;
 }
 
 /**

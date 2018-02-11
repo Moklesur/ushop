@@ -110,12 +110,23 @@ function ushop_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Bottom', 'ushop' ),
+		'id'            => 'footer-bottom',
+		'description'   => esc_html__( 'Add widgets here.', 'ushop' ),
+		'before_widget' => '<div id="%1$s" class="footer-bottom-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h6 class="footer-bottom-widget-title">',
+		'after_title'   => '</h6>',
+	) );
 
 	// Register Widgets
 	register_widget( 'uShop_Widget_Services' );
 	register_widget( 'uShop_Widget_Trending_Products' );
 	register_widget( 'uShop_Widget_Category_Filter' );
 	register_widget( 'uShop_Widget_Category_List' );
+	register_widget( 'uShop_Widget_Feature_Box' );
+	register_widget( 'uShop_Widget_YouTube' );
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
 
@@ -126,6 +137,7 @@ require get_template_directory() . '/inc/widgets/widget-services.php';
 require get_template_directory() . '/inc/widgets/widget-treading-products.php';
 require get_template_directory() . '/inc/widgets/widget-category-filter.php';
 require get_template_directory() . '/inc/widgets/widget-category-list.php';
+require get_template_directory() . '/inc/widgets/widget-video.php';
 require get_template_directory() . '/inc/widgets/widgets.php';
 /**
  * Load Site Origin Bundle

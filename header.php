@@ -28,7 +28,7 @@
 		<section class="header-1">
 			<div class="container-fluid">
 				<div class="row align-items-center">
-					<div class="col-lg-3 col-12">
+					<div class="col-lg-3 col-md-12 col-12">
 						<div class="site-branding">
 							<?php
 							the_custom_logo();
@@ -46,7 +46,7 @@
 							endif; ?>
 						</div><!-- .site-branding -->
 					</div>
-					<div class="col-lg-7 col-md-6 col-12 d-flex justify-content-center main-menu">
+					<div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center main-menu">
 						<nav class="navbar navbar-expand-lg pl-0 pr-0">
 							<div class="mobile-bar text-right">
 								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ushop' ); ?>">
@@ -67,7 +67,7 @@
 							?>
 						</nav>
 					</div>
-					<div class="col-lg-2 col-md-3 col-12 mini-cart-search text-right">
+					<div class="col-lg-3 col-md-3 col-12 mini-cart-search text-right">
 						<div class="search-modal d-inline">
 							<a class="" href="#" role="button" data-toggle="modal" data-target="#search-modal"><i class="ion-ios-search"></i></a>
 
