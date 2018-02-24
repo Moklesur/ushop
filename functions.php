@@ -127,6 +127,7 @@ function ushop_widgets_init() {
 	register_widget( 'uShop_Widget_Category_List' );
 	register_widget( 'uShop_Widget_Feature_Box' );
 	register_widget( 'uShop_Widget_YouTube' );
+	register_widget( 'uShop_Widget_Recent_Blog' );
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
 
@@ -138,6 +139,7 @@ require get_template_directory() . '/inc/widgets/widget-treading-products.php';
 require get_template_directory() . '/inc/widgets/widget-category-filter.php';
 require get_template_directory() . '/inc/widgets/widget-category-list.php';
 require get_template_directory() . '/inc/widgets/widget-video.php';
+require get_template_directory() . '/inc/widgets/widget-recent-blog.php';
 require get_template_directory() . '/inc/widgets/widgets.php';
 /**
  * Load Site Origin Bundle

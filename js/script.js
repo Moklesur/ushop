@@ -53,13 +53,13 @@
         }
         //Treading Products
         if ( ( '.treading-products' ).length ){
-            $(".treading-products .products").replaceWith($("<div class=\"products\">" + $(".treading-products .products")[0].innerHTML + "</div>"));
+            //$(".treading-products .products").replaceWith($("<div class=\"products\">" + $(".treading-products .products")[0].innerHTML + "</div>"));
             $(".treading-products .products > li").each(function(){
                 $(this).replaceWith($("<div>" + this.innerHTML + "</div>"))
             });
             $( '.treading-products .products' ).each( function() {
                 $('.treading-products .products').slick({
-                    slidesToShow: 3,
+                    slidesToShow: 4,
                     slidesToScroll: 1,
                     autoplay: false,
                     centerMode: true,
@@ -70,8 +70,8 @@
                         {
                             breakpoint: 1024,
                             settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 3,
+                                slidesToShow: 4,
+                                slidesToScroll: 1,
                                 infinite: true,
                                 dots: true
                             }
@@ -80,7 +80,7 @@
                             breakpoint: 600,
                             settings: {
                                 slidesToShow: 2,
-                                slidesToScroll: 2
+                                slidesToScroll: 1
                             }
                         },
                         {
@@ -92,6 +92,29 @@
                         }
                     ]
                 });
+            });
+        }
+        //Single Product Image
+        if ( ( '.single-product-images figure' ).length ) {
+            $('.single-product-images figure').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                nextArrow: '<i class="ion-ios-arrow-right f-2x"></i>',
+                prevArrow: '<i class="ion-ios-arrow-left f-2x"></i>',
+                fade: true,
+                asNavFor: '.single-product-images .product-thumbs'
+            });
+        }
+        if ( ( '.single-product-images .product-thumbs' ).length ){
+            $('.single-product-images .product-thumbs').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                nextArrow: '<i class="ion-ios-arrow-right"></i>',
+                prevArrow: '<i class="ion-ios-arrow-left"></i>',
+                asNavFor: '.single-product-images figure',
+                dots: false,
+                focusOnSelect: true
             });
         }
     });

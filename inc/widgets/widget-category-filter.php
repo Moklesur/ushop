@@ -21,8 +21,8 @@ class uShop_Widget_Category_Filter extends WP_Widget {
             $args['widget_id'] = $this->id;
         }
         $title = ( !empty($instance['title']) ) ? $instance['title'] : '';
-        $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 10;
-        $columns = ( ! empty( $instance['columns'] ) ) ? absint( $instance['columns'] ) : 5;
+        $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 8;
+        $columns = ( ! empty( $instance['columns'] ) ) ? absint( $instance['columns'] ) : 4;
 
         $select_category  = isset( $instance['select_category'] ) ? array_map( 'esc_attr', $instance['select_category'] ) : '';
 
@@ -66,8 +66,8 @@ class uShop_Widget_Category_Filter extends WP_Widget {
     }
     public function form( $instance ) {
         $title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-        $limit     = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 10;
-        $columns     = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 5;
+        $limit     = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 8;
+        $columns     = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 4;
         $select_category       = isset( $instance['select_category'] ) ? array_map( 'esc_attr', $instance['select_category'] ) : '';
         ?>
         <div class="ushop-wrap">

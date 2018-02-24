@@ -14,7 +14,7 @@ function category_id_class( $classes ) {
     global $post;
     $product_cats = get_the_terms( $post->ID, 'product_cat' );
     if( $product_cats ) foreach ( $product_cats as $category ) {
-        $classes[] = 'ggggggggggggggg';
+        $classes[] = 'product-layout-fix ushop-product';
     }
     return $classes;
 }
@@ -37,6 +37,64 @@ add_action('woocommerce_after_main_content', 'ushop_close_div', 50);
 
 function ushop_close_div() {
     echo '</div>';
+}
+
+
+/**
+ * Added Row
+ */
+add_action( 'woocommerce_before_single_product_summary', 'ushop_product_wrapper_start', 1 );
+function ushop_product_wrapper_start() {
+    echo '<div class="row">';
+}
+add_action( 'woocommerce_after_single_product_summary', 'ushop_product_wrapper_end', 1 );
+function ushop_product_wrapper_end() {
+    echo '</div>';
+}
+
+
+/**
+ * Single Product
+ * Added classes in product images
+ */
+add_action( 'woocommerce_before_single_product_summary', 'ushop_product_images_start', 1 );
+function ushop_product_images_start() {
+    echo '<div class="col-lg-6 col-sm-6 col-12 single-product-images">';
+}
+
+/**
+ * Single Product
+ * Added classes in product description
+ */
+add_action( 'woocommerce_before_single_product_summary', 'ushop_product_summary_start', 999 );
+function ushop_product_summary_start() {
+    echo '</div>';
+    echo '<div class="col-lg-6 col-sm-6 col-12 single-product-summary">';
+}
+add_action( 'woocommerce_after_single_product_summary', 'ushop_product_summary_end', 0 );
+function ushop_product_summary_end() {
+    echo '</div>';
+}
+
+
+/**
+ * Single gallery thumbs navigation
+ */
+add_action( 'woocommerce_before_single_product_summary', 'ushop_single_gallery_query', 21 );
+function ushop_single_gallery_query() { ?>
+    <div class="product-thumbs">
+        <?php
+        global $product, $post;
+        $gallery_ids = $product->get_gallery_image_ids();
+        $post_id = $post -> ID;
+        $post_thumb = get_post_thumbnail_id( $post_id );
+        echo '<div class="slick-slide">' . wp_get_attachment_image( $post_thumb, 'medium' ) . '</div>';
+        foreach( $gallery_ids as $gallery_id ) {
+            echo '<div class="slick-slide">' . wp_get_attachment_image( $gallery_id, 'medium' ) . '</div>';
+        }
+        ?>
+    </div>
+    <?php
 }
 
 /**

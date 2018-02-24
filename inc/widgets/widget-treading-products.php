@@ -23,17 +23,16 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $title = ( !empty($instance['title']) ) ? $instance['title'] : '';
         $view_all = ( !empty($instance['view_all']) ) ? $instance['view_all'] : '';
         $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
-        $columns = ( ! empty( $instance['columns'] ) ) ? absint( $instance['columns'] ) : 3;
 
         echo $args['before_widget']; ?>
-        <div class="widget-trending-products woo-img-center add-btn-hover">
+        <div class="widget-trending-products woo-img-center add-btn-hover text-center">
             <?php if( $title != '' ) { ?>
                 <div class="widgets-heading mb-5">
                     <?php echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>
                 </div>
             <?php } ?>
             <div class="trending-products-contents">
-                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading" columns="' . $columns . '" best_selling="true" ]' );  ?>
+                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading text-left" best_selling="true" ]' );  ?>
                 <?php if ( $view_all != '' ) : ?>
                     <a href="<?php echo esc_url( $view_all ); ?>" class="view-all text-uppercase"><?php esc_html_e( 'View All', 'ushop' ); ?></a>
                 <?php endif; ?>
@@ -46,7 +45,6 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $instance['title'] = sanitize_text_field( $new_instance['title'] );
         $instance['view_all'] = esc_url_raw( $new_instance['view_all'] );;
         $instance['limit'] = absint( $new_instance['limit'] );
-        $instance['columns'] = absint( $new_instance['columns'] );
         $instance[ 'slider' ] = absint( $new_instance[ 'slider' ] );
         return $instance;
     }
@@ -54,7 +52,6 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $view_all     = isset( $instance['view_all'] ) ? esc_url( $instance['view_all'] ) : '';
         $limit     = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 3;
-        $columns     = isset( $instance['columns'] ) ? absint( $instance['columns'] ) : 3;
         $slider = !empty( $instance['slider'] ) ? $instance['slider'] : '' ;
         ?>
         <div class="ushop-wrap">
@@ -75,12 +72,6 @@ class uShop_Widget_Trending_Products extends WP_Widget {
                     <h5>
                         <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Number of products to show.', 'ushop' ); ?></label>
                         <input class="tiny-text" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="1" value="<?php echo $limit; ?>" size="3" />
-                    </h5>
-                </div>
-                <div class="col-3">
-                    <h5>
-                        <label for="<?php echo $this->get_field_id( 'columns' ); ?>"><?php _e( 'Number of products to show columns in a row.', 'ushop' ); ?></label>
-                        <input class="tiny-text" id="<?php echo $this->get_field_id( 'columns' ); ?>" name="<?php echo $this->get_field_name( 'columns' ); ?>" type="number" step="1" min="1" value="<?php echo $columns; ?>" size="3" />
                     </h5>
                 </div>
                 <div class="col-3">

@@ -10,6 +10,7 @@ $theme_widgets = array(
     'widget-category-list',
     'widget-category-list',
     'widget-feature-box',
+    'widget-recent-blog',
     'widget-video'
 );
 
