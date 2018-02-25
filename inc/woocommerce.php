@@ -1,12 +1,11 @@
 <?php
 /**
- * Add and remove actions
+ * Remove all WC styling
  */
-function leto_woocommerce_actions() {
-    //Remove all WC styling
+function ushop_woocommerce_styling_deregister() {
     add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
-add_action( 'wp', 'leto_woocommerce_actions' );
+add_action( 'wp', 'ushop_woocommerce_styling_deregister' );
 
 
 // add product category name to post class
@@ -110,3 +109,22 @@ function ushop_header_add_to_cart_fragment( $fragments ) {
     $fragments['a.cart-contents'] = ob_get_clean();
     return $fragments;
 }
+
+/**
+ * Remove breadcrumbs
+ */
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+/**
+ * Breadcrumbs
+ */
+function ushop_breadcrumb() {
+    if ( !is_front_page() ) { ?>
+        <section class="page-breadcrumb breadcrumb">
+            <div class="container-fluid">
+                <?php woocommerce_breadcrumb(); ?>
+            </div>
+        </section> <!--- .page-breadcrumb .breadcrumb --->
+        <?php
+    }
+}
+add_action( 'ushop_after_header', 'ushop_breadcrumb' );

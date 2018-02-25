@@ -24,7 +24,7 @@
 <a href="#" id="back-to-top" title="<?php esc_attr_e( 'Back to top', 'ushop' ); ?>">&uarr;</a>
 <div class="layout">
 
-	<header id="masthead" class="site-header">
+<header id="masthead" class="site-header">
 		<section class="header-1">
 			<div class="container-fluid">
 				<div class="row align-items-center">
@@ -131,3 +131,5 @@
 		</section>
 		<?php endif; ?>
 	</header><!-- #masthead -->
+
+<?php do_action( 'ushop_after_header' ); ?>
