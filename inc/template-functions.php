@@ -12,12 +12,30 @@
  * @return array
  */
 function ushop_body_classes( $classes ) {
+
+	// Adds a class of wide & boxed to site layout
+	$site_layout = get_theme_mod( 'site_layout', 'wide' );
+	if (  $site_layout == 'wide' ) {
+		$classes[] =  "wide";
+	}else{
+		$classes[] = "boxed";
+	}
+
+	// Sticky class
+	$sticky_hide = get_theme_mod( 'sticky_hide', 1 );
+	if ( $sticky_hide ) {
+		$classes[] = 'has_sticky';
+	}
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
-	if ( is_woocommerce() || is_cart() ){
-		$classes[] = 'woo-btn-hover-pages';
+
+	if( class_exists( 'WooCommerce' ) ){
+		if ( is_woocommerce() || is_cart() ){
+			$classes[] = 'woo-btn-hover-pages';
+		}
 	}
 
 	return $classes;

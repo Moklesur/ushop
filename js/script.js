@@ -23,7 +23,7 @@
             });
         }
         //masonry
-        
+
         if ( $(".category-filter").length ){
             var $container = $('.category-filter .products');
             $container.isotope({
@@ -117,5 +117,22 @@
                 focusOnSelect: true
             });
         }
+        // Quantity
+        if ( ( '.single-product-summary' ).length ) {
+            // Quantity Buttons Append
+            var plus = $( this ).find( '.qty-plus' );
+            var minus = $( this ).find( '.qty-minus' );
+            $( this ).find( '.single-product-summary .quantity' ).append( plus );
+            $( this ).find( '.single-product-summary .quantity' ).append( minus );
+            // Quantity Increase Decrease
+            $( 'body' ).on( 'click', '.qty-plus, .qty-minus', function( e ) {
+                e.preventDefault();
+                var $quantity = $( this ).closest( '.quantity' ).find( '.qty' ),
+                    currentVal = parseInt( $quantity.val() ),
+                    isAdd = $( this ).hasClass( 'q-add' );
+                !isNaN( currentVal ) && $quantity.val( isAdd ? ++currentVal : ( currentVal > 0 ? --currentVal : currentVal ) );
+            } );
+        }
+
     });
 })( jQuery );

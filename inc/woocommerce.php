@@ -1,4 +1,11 @@
 <?php
+if ( ! class_exists( 'WooCommerce' ) ) {
+    return;
+}
+/**
+ * Remove cross-sells at cart
+ */
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 /**
  * Remove all WC styling
  */
@@ -19,6 +26,10 @@ function category_id_class( $classes ) {
 }
 add_filter( 'post_class', 'category_id_class' );
 
+/**
+ * Remove breadcrumbs
+ */
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 
 /**
  * Opening div for our content wrapper
@@ -114,17 +125,12 @@ function ushop_header_add_to_cart_fragment( $fragments ) {
  * Remove breadcrumbs
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+
 /**
- * Breadcrumbs
+ *  Quantity Increase Decrease
  */
-function ushop_breadcrumb() {
-    if ( !is_front_page() ) { ?>
-        <section class="page-breadcrumb breadcrumb">
-            <div class="container-fluid">
-                <?php woocommerce_breadcrumb(); ?>
-            </div>
-        </section> <!--- .page-breadcrumb .breadcrumb --->
-        <?php
-    }
-}
-add_action( 'ushop_after_header', 'ushop_breadcrumb' );
+add_action( 'woocommerce_single_product_summary', 'ushop_quantity_buttons', 30 );
+function ushop_quantity_buttons() { ?>
+    <a href="#" class="qty-plus q-add qty-fix"><i class="ion-plus"></i></a>
+    <a href="#" class="qty-minus q-min qty-fix"><i class="ion-minus"></i></a>
+<?php }

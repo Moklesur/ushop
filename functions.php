@@ -27,6 +27,8 @@ if ( ! function_exists( 'ushop_setup' ) ) :
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -105,10 +107,10 @@ function ushop_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'ushop' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'ushop' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_widget' => '<div id="%1$s" class="widget %2$s mb-5">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title mb-4">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Bottom', 'ushop' ),
@@ -116,9 +118,23 @@ function ushop_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'ushop' ),
 		'before_widget' => '<div id="%1$s" class="footer-bottom-widget %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="footer-bottom-widget-title">',
-		'after_title'   => '</h6>',
+		'before_title'  => '<h4 class="footer-bottom-widget-title">',
+		'after_title'   => '</h4>',
 	) );
+
+	if ( class_exists( 'WooCommerce' ) ) {
+
+		register_sidebar( array(
+			'name'          => __( 'WooCommerce', 'ushop' ),
+			'id'            => 'woocommerce-sidebar',
+			'description'   => esc_html__( 'Add widgets here to appear in your WooCommerce sidebar.', 'ushop' ),
+			'before_widget' => '<div id="%1$s" class="woo-widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h4 class="woo-widget-title">',
+			'after_title'   => '</h4>',
+		) );
+
+	}
 
 	// Register Widgets
 	register_widget( 'uShop_Widget_Services' );
@@ -162,7 +178,6 @@ function ushop_load_pagebuilder_scripts() {
 		wp_enqueue_style( 'ushop-widgets-style', get_template_directory_uri() . '/inc/widgets/admin/css/widgets-style.css', '1.0.0', false );
 		wp_enqueue_media();
 	}
-
 }
 add_action( 'admin_enqueue_scripts', 'ushop_load_pagebuilder_scripts' );
 
@@ -220,6 +235,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
+ * Header Function
+ */
+require get_template_directory() . '/inc/header/header-function.php';
+
+/**
  * Breadcrumb
  */
 require get_template_directory() . '/inc/breadcrumb.php';
@@ -227,11 +247,12 @@ require get_template_directory() . '/inc/breadcrumb.php';
 /**
  * woocommerce support
  */
-add_action( 'after_setup_theme', 'timagazine_woocommerce_support' );
 function timagazine_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-zoom' );
 }
-
+add_action( 'after_setup_theme', 'timagazine_woocommerce_support' );
 /**
  * Load WP Bootstrap Nav Walker file.
  */

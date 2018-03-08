@@ -7,11 +7,13 @@
  * @package ushop
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
-?>
 
-<aside id="secondary" class="widget-area col-lg-3 col-md-3 col-12">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+if ( class_exists( 'WooCommerce' ) && ( is_shop() || is_product() ) ) {
+	?><aside id="secondary" class="widget-area col-lg-3 col-md-3 col-12"><?php
+	dynamic_sidebar( 'woocommerce-sidebar' );
+	?></aside><!-- #secondary --><?php
+}else {
+	?><aside id="secondary" class="widget-area col-lg-3 col-md-3 col-12"><?php
+	dynamic_sidebar( 'sidebar-1' );
+	?></aside><!-- #secondary --><?php
+}

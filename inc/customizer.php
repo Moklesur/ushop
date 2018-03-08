@@ -29,6 +29,20 @@ function ushop_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'ushop_customize_register' );
 
 /**
+ * Early exit if Kirki exists.
+ */
+require get_template_directory() . '/inc/kirki/include-kirki.php';
+require get_template_directory() . '/inc/kirki/ushop-kirki.php';
+/**
+ * Kirki Customizer settings
+ */
+Ushop_Kirki::add_config( 'ushop', array(
+	'capability'    => 'edit_theme_options',
+	'option_type'   => 'theme_mod',
+) );
+require get_template_directory() . '/inc/kirki/kirki-customizer.php';
+
+/**
  * Render the site title for the selective refresh partial.
  *
  * @return void
