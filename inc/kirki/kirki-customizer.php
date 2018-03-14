@@ -14,7 +14,6 @@ $customer_files = array(
     'general',
     'typography',
     'colors',
-    'social_link',
     'footer',
     'blog',
     'breadcrumb',

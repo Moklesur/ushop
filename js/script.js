@@ -96,6 +96,8 @@
         }
         //Single Product Image
         if ( ( '.single-product-images figure' ).length ) {
+
+
             $('.single-product-images figure').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -107,8 +109,20 @@
             });
         }
         if ( ( '.single-product-images .product-thumbs' ).length ){
+
+            var has_vertical = $(".ushop-thumb-images-default").length;
+
+
+            if ( ! has_vertical ) {
+                var vertical = true;
+                var slidesToShow = 3;
+            }else{
+                var slidesToShow = 4;
+            }
+
             $('.single-product-images .product-thumbs').slick({
-                slidesToShow: 4,
+                slidesToShow: slidesToShow,
+                vertical: vertical,
                 slidesToScroll: 1,
                 nextArrow: '<i class="ion-ios-arrow-right"></i>',
                 prevArrow: '<i class="ion-ios-arrow-left"></i>',
@@ -132,6 +146,17 @@
                     isAdd = $( this ).hasClass( 'q-add' );
                 !isNaN( currentVal ) && $quantity.val( isAdd ? ++currentVal : ( currentVal > 0 ? --currentVal : currentVal ) );
             } );
+        }
+        // has sticky
+        if ( ( 'body.has_sticky' ).length ) {
+            jQuery(window).scroll(function() {
+                if (jQuery(this).scrollTop() > 10 ){
+                    jQuery('.site-header').addClass("sticky-fix");
+                }
+                else{
+                    jQuery('.site-header').removeClass("sticky-fix");
+                }
+            });
         }
 
     });

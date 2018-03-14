@@ -25,7 +25,7 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
 
         echo $args['before_widget']; ?>
-        <div class="widget-trending-products woo-img-center add-btn-hover text-center">
+        <div class="widget-trending-products woo-img-center add-btn-hover">
             <?php if( $title != '' ) { ?>
                 <div class="widgets-heading mb-5">
                     <?php echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>

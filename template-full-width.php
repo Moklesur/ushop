@@ -12,7 +12,7 @@ get_header();
         <section>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 margin-top">
                         <?php
                         while ( have_posts() ) : the_post();
 

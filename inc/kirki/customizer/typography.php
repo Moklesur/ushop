@@ -18,6 +18,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'body_typography',
     'label'       => esc_attr__( 'Select Body Font Family', 'ushop' ),
     'section'     => 'body_typography_section',
+    'transport'	  => 'auto',
     'default'     => array(
         'font-family'    => 'Ubuntu',
         'variant'        => '400',
@@ -31,6 +32,10 @@ Ushop_Kirki::add_field( 'ushop', array(
     'output'      => array(
         array(
             'element' => 'body',
+        ),
+        array(
+            'element' => 'body, .search-modal a, .account-login  a, .mini-cart a,.products a,.widget-area, .widget-area a, .so-panel.widget.woocommerce a,.single-product-summary .quantity a,.woocommerce-product-gallery__trigger,.woocommerce-product-rating a,.woocommerce-cart-form a,.entry-footer a,.category-filter-wrap a,.woocommerce-MyAccount-navigation a',
+            'property' => 'color',
         ),
     ),
 ) );
@@ -46,6 +51,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'heading_typography',
     'label'       => esc_attr__( 'Select Heading Font Family', 'ushop' ),
     'section'     => 'heading_typography_section',
+    'transport'	  => 'auto',
     'default'     => array(
         'font-family'    => 'Ubuntu',
         'variant'        => '500',

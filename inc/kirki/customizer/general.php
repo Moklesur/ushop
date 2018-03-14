@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * General Setting
+ */
 Ushop_Kirki::add_panel('general_panel', array(
     'priority' => 10,
     'title' => esc_attr__('General Settings', 'ushop'),
@@ -30,4 +32,27 @@ Ushop_Kirki::add_section( 'background_image', array(
     'theme_supports' => 'custom-background',
     'panel'          => 'general_panel',
     'priority'       => 20,
+) );
+
+// Margin Top
+Ushop_Kirki::add_field( 'ushop', array(
+    'type'        => 'slider',
+    'settings'    => 'section_margin_top',
+    'label'       => esc_attr__( 'Margin Top', 'ushop' ),
+    'description' => 'Margin Top not work in front page',
+    'section'     => 'site_layout_section',
+    'default'     => 30,
+    'transport'	  => 'auto',
+    'choices'   => array(
+        'min'  => 5,
+        'max'  => 100,
+        'step' => 1,
+    ),
+    'output'      => array(
+        array(
+            'element'  => '.margin-top',
+            'property' => 'margin-top',
+            'units'    => 'px',
+        ),
+    )
 ) );

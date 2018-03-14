@@ -5,7 +5,7 @@
 // Site Layout Section
 Ushop_Kirki::add_section( 'breadcrumb_section', array(
     'title'          => esc_attr__( 'Breadcrumb', 'ushop' ),
-    'priority'       => 40,
+    'priority'       => 60,
 ) );
 // Hide Breadcrumb
 Ushop_Kirki::add_field( 'ushop', array(
@@ -44,7 +44,12 @@ Ushop_Kirki::add_field( 'ushop', array(
     'default'     => '#e9ecef',
     'priority'    => 30,
     'transport'	  => 'auto',
-    'element' => '.page-breadcrumb'
+    'output'      => array(
+        array(
+            'element' => '.page-breadcrumb',
+            'property' => 'background-color',
+        ),
+    ),
 ) );
 // Font Size
 Ushop_Kirki::add_field( 'ushop', array(
@@ -56,7 +61,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'default'     => 36,
     'transport'	  => 'auto',
     'choices'     => array(
-        'min'  => '16',
+        'min'  => '12',
         'max'  => '100',
         'step' => '1',
     ),
@@ -75,11 +80,11 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'       => esc_attr__( 'Padding Top', 'ushop' ),
     'section'     => 'breadcrumb_section',
     'priority'    => 50,
-    'default'     => 50,
+    'default'     => 100,
     'transport'	  => 'auto',
     'choices'   => array(
         'min'  => 0,
-        'max'  => 200,
+        'max'  => 400,
         'step' => 1,
     ),
     'output'      => array(
@@ -101,7 +106,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'transport'	  => 'auto',
     'choices'   => array(
         'min'  => 0,
-        'max'  => 200,
+        'max'  => 400,
         'step' => 1,
     ),
     'output'      => array(

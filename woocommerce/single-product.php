@@ -19,10 +19,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+// For Right Sidebar Layout
+$product_layout = ushop_product_layout();
+$row = 'row';
+if ( $product_layout == 'left-sidebar' ) {
+	$row = 'd-flex flex-row-reverse';
+}
 
 get_header( 'shop' ); ?>
-	<div class="container-fluid">
-		<div class="row">
+	<div class="container-fluid product-<?php echo get_theme_mod( 'single_product_layout', 'full-width' ); ?>">
+		<div class="<?php echo $row; ?>">
 			<?php
 			/**
 			 * woocommerce_before_main_content hook.

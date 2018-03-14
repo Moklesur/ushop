@@ -16,7 +16,7 @@ get_header(); ?>
 	<main id="main" class="site-main">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-12 col-md-12 col-12">
+				<div class="col-lg-12 col-md-12 col-12 margin-top">
 					<?php
 					while ( have_posts() ) : the_post();
 

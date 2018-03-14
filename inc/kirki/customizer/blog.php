@@ -23,7 +23,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'priority'    => 10,
     'choices'     => array(
         'default' => esc_attr__( 'Default', 'ushop' ),
-        'two-column' => esc_attr__( 'Two Columns with Right Sidebar', 'ushop' ),
+        'two-column' => esc_attr__( 'Two Columns', 'ushop' ),
         'three-column' => esc_attr__( 'Three Columns & No Sidebar', 'ushop' ),
     ),
 ) );

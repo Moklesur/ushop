@@ -28,16 +28,11 @@
 		<?php
 		do_action( 'ushop_header' );
 		do_action( 'ushop_hero_banner' );
-
-		if ( get_header_image() ) :
-			?>
-			<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" class="img-fluid">
-		<?php endif; ?>
+		?>
 	</header><!-- #masthead -->
 
 <?php
-	$breadcrumb_hide = get_theme_mod( 'breadcrumb_hide', 1 );
-	if ( $breadcrumb_hide ) {
+	if ( true == get_theme_mod( 'breadcrumb_hide', true )  ) {
 		ushop_breadcrumbs();
 	}
 ?>

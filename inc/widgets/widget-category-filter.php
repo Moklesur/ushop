@@ -39,16 +39,18 @@ class uShop_Widget_Category_Filter extends WP_Widget {
                     <li class="list-inline-item">
                         <a href="#" data-filter="*" class="current"><?php esc_html_e( 'All', 'ushop' ); ?></a>
                     </li>
-                <?php
-                $cat_name_val = '';
-                foreach ( $select_category as $cat_array ) {
+                    <?php
+                    $cat_name_val = '';
+                    if ( is_array( $select_category ) || is_object( $select_category ) ){
+                        foreach ( $select_category as $cat_array ) {
 
-                    $cat_name = get_term_by( 'id', $cat_array, 'product_cat' );
-                    $cat_name_val .= $cat_name->name.',';
-                    echo '<li class="list-inline-item"><a href="#" data-filter=".product_cat-'. $cat_name->slug.'">'. $cat_name->name.'</a></li>';
-                }
-                $cat_name_val = substr( $cat_name_val, 0, strlen($cat_name_val)-1 );
-                ?>
+                            $cat_name = get_term_by( 'id', $cat_array, 'product_cat' );
+                            $cat_name_val .= $cat_name->name.',';
+                            echo '<li class="list-inline-item"><a href="#" data-filter=".product_cat-'. $cat_name->slug.'">'. $cat_name->name.'</a></li>';
+                        }
+                    }
+                    $cat_name_val = substr( $cat_name_val, 0, strlen($cat_name_val)-1 );
+                    ?>
                 </ul>
                 <?php
                 echo do_shortcode( '[products  limit="' . $limit . '" class="category-filter" columns="' . $columns . '" category="' .$cat_name_val. '"]' );  ?>

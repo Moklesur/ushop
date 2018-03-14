@@ -112,35 +112,37 @@ function ushop_widgets_init() {
 		'before_title'  => '<h4 class="widget-title mb-4">',
 		'after_title'   => '</h4>',
 	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Bottom', 'ushop' ),
-		'id'            => 'footer-bottom',
-		'description'   => esc_html__( 'Add widgets here.', 'ushop' ),
-		'before_widget' => '<div id="%1$s" class="footer-bottom-widget %2$s">',
+
+	$args_footer_widgets = array(
+		'name'          => __( 'Footer %d', 'ushop' ),
+		'id'            => 'footer-widget',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="footer-bottom-widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="footer-bottom-widget-title">',
-		'after_title'   => '</h4>',
-	) );
+		'before_title'  => '<h4 class="footer-bottom-title mb-3">',
+		'after_title'   => '</h4>'
+	);
+	register_sidebars( 4, $args_footer_widgets );
 
 	if ( class_exists( 'WooCommerce' ) ) {
-
 		register_sidebar( array(
 			'name'          => __( 'WooCommerce', 'ushop' ),
 			'id'            => 'woocommerce-sidebar',
 			'description'   => esc_html__( 'Add widgets here to appear in your WooCommerce sidebar.', 'ushop' ),
-			'before_widget' => '<div id="%1$s" class="woo-widget %2$s">',
+			'before_widget' => '<div id="%1$s" class="woo-widget  mb-5 %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h4 class="woo-widget-title">',
+			'before_title'  => '<h4 class="woo-widget-title mb-3">',
 			'after_title'   => '</h4>',
 		) );
-
 	}
 
 	// Register Widgets
 	register_widget( 'uShop_Widget_Services' );
-	register_widget( 'uShop_Widget_Trending_Products' );
-	register_widget( 'uShop_Widget_Category_Filter' );
-	register_widget( 'uShop_Widget_Category_List' );
+	if ( class_exists( 'WooCommerce' ) ) {
+		register_widget( 'uShop_Widget_Trending_Products' );
+		register_widget( 'uShop_Widget_Category_Filter' );
+		register_widget( 'uShop_Widget_Category_List' );
+	}
 	register_widget( 'uShop_Widget_Feature_Box' );
 	register_widget( 'uShop_Widget_YouTube' );
 	register_widget( 'uShop_Widget_Recent_Blog' );
@@ -285,10 +287,30 @@ function timagazine_active_plugins() {
 			'required'  => false,
 		),
 		array(
+			'name'      => 'kirki Customizer',
+			'slug'      => 'kirki',
+			'required'  => false,
+		),
+		array(
 			'name'      => 'WooCommerce',
 			'slug'      => 'woocommerce',
 			'required'  => false,
 		)
 	);
 	tgmpa( $plugins );
+}
+
+/**
+ * Archive layout
+ */
+function ushop_archive_layout() {
+	$archive_layout = get_theme_mod( 'archive_layout','archive-default' );
+	return $archive_layout;
+}
+/**
+ * Product layout
+ */
+function ushop_product_layout() {
+	$product_layout = get_theme_mod( 'single_product_layout','default' );
+	return $product_layout;
 }

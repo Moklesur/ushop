@@ -18,13 +18,12 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'archive_layout',
     'label'       => __( 'Archive Layout', 'ushop' ),
     'section'     => 'product_archive_section',
-    'default'     => 'default',
+    'default'     => 'archive-default',
     'priority'    => 10,
-    'multiple'    => 1,
     'choices'     => array(
-        'default' => esc_attr__( 'Default', 'ushop' ),
-        'right-sidebar' => esc_attr__( 'Right Sidebar', 'ushop' ),
-        'full-width' => esc_attr__( 'Full Width', 'ushop' ),
+        'archive-default' => esc_attr__( 'Default', 'ushop' ),
+        'archive-left-sidebar' => esc_attr__( 'Left Sidebar', 'ushop' ),
+        'archive-fullwidth' => esc_attr__( 'Full Width', 'ushop' ),
     ),
 ) );
 // Number of columns
@@ -33,14 +32,13 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'archive_product_columns',
     'label'       => __( 'Number of columns', 'ushop' ),
     'section'     => 'product_archive_section',
-    'default'     => 'one',
+    'default'     => '3',
     'priority'    => 15,
-    'multiple'    => 1,
     'choices'     => array(
-        'one' => esc_attr__( 'One', 'ushop' ),
-        'two' => esc_attr__( 'Two', 'ushop' ),
-        'three' => esc_attr__( 'Three', 'ushop' ),
-        'four' => esc_attr__( 'Four', 'ushop' ),
+        '1' => esc_attr__( 'One', 'ushop' ),
+        '2' => esc_attr__( 'Two', 'ushop' ),
+        '3' => esc_attr__( 'Three', 'ushop' ),
+        '4' => esc_attr__( 'Four', 'ushop' ),
     ),
 ) );
 // Product Limit A page
@@ -107,10 +105,9 @@ Ushop_Kirki::add_field( 'ushop', array(
     'section'     => 'single_product_section',
     'default'     => 'default',
     'priority'    => 10,
-    'multiple'    => 1,
     'choices'     => array(
         'default' => esc_attr__( 'Default', 'ushop' ),
-        'right-sidebar' => esc_attr__( 'Right Sidebar', 'ushop' ),
+        'left-sidebar' => esc_attr__( 'Left Sidebar', 'ushop' ),
         'full-width' => esc_attr__( 'Full Width', 'ushop' ),
     ),
 ) );
@@ -134,16 +131,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
     'settings'    => 'single_product_hide_rating',
     'priority'    => 20,
-    'label'       => esc_attr__( 'Hide Rating', 'ushop' ),
-    'section'     => 'single_product_section',
-    'default'     => false,
-) );
-// Hide Customer Link
-Ushop_Kirki::add_field( 'ushop', array(
-    'type'        => 'checkbox',
-    'settings'    => 'single_product_hide_customer_link',
-    'priority'    => 30,
-    'label'       => esc_attr__( 'Hide Customer Link', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Product Rating', 'ushop' ),
     'section'     => 'single_product_section',
     'default'     => false,
 ) );
@@ -168,9 +156,9 @@ Ushop_Kirki::add_field( 'ushop', array(
 // Hide Social share
 Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
-    'settings'    => 'single_product_hide_social_share',
+    'settings'    => 'single_product_hide_meta',
     'priority'    => 60,
-    'label'       => esc_attr__( 'Hide Social Share', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Meta', 'ushop' ),
     'section'     => 'single_product_section',
     'default'     => false,
 ) );

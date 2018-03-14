@@ -19,12 +19,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// For Right Sidebar Layout
+$archive_layout = ushop_archive_layout();
+$row = 'row';
+if ( $archive_layout == 'archive-left-sidebar' ) {
+	$row = 'd-flex flex-row-reverse';
+}
 
 get_header( 'shop' ); ?>
-	<div class="container-fluid">
-		<div class="row">
+	<div class="container-fluid product-<?php echo $archive_layout; ?>">
+		<div class="<?php echo $row; ?>">
 
 			<?php
+
 			/**
 			 * Hook: woocommerce_before_main_content.
 			 *
@@ -37,9 +44,7 @@ get_header( 'shop' ); ?>
 
 			<header class="woocommerce-products-header">
 
-				<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-				<?php endif;
+				<?php
 
 				/**
 				 * Hook: woocommerce_archive_description.

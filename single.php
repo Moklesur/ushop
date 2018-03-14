@@ -11,11 +11,11 @@ get_header(); ?>
 	<main id="main" class="site-main">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-9 col-md-9 col-12">
+				<div class="col-lg-9 col-md-9 col-12 margin-top">
 					<?php
 					while ( have_posts() ) : the_post();
 
-						get_template_part( 'template-parts/content', get_post_type() );
+						get_template_part( 'template-parts/content-single', get_post_type() );
 
 						the_post_navigation();
 

@@ -68,16 +68,6 @@ function ushop_cart_acctount_search_action() {
         <div class="search-modal d-inline">
             <a class="" href="#" role="button" data-toggle="modal" data-target="#search-modal"><i class="ion-ios-search"></i></a>
             <!-- Modal -->
-            <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-modalTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <h3 class="search-title-modal"><?php esc_html_e( 'Search for Anything here','ushop' ); ?></h3>
-                            <?php get_search_form(); ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <?php
     endif;
@@ -120,6 +110,7 @@ function ushop_header_action() {
     <section class="<?php echo $header_layout; ?> site-header">
         <div class="container-fluid">
             <div class="row align-items-center">
+                <div class="header-sticky-append"></div>
                 <?php
                 if( $header_layout == 'header-3' ){
                     do_action( 'ushop_logo' );
@@ -179,6 +170,27 @@ function ushop_header_action() {
             </div>
         </div>
     </section>
+    <?php
+    $hide_search = get_theme_mod( 'hide_search', 1 );
+    if( $hide_search ): ?>
+        <section>
+            <div class="search-modal d-inline">
+                <!-- Modal -->
+                <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-modalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h3 class="search-title-modal"><?php esc_html_e( 'Search for Anything here','ushop' ); ?></h3>
+                                <?php get_search_form(); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+    endif;
+    ?>
 <?php }
 add_action( 'ushop_header', 'ushop_header_action' );
 
@@ -186,24 +198,19 @@ add_action( 'ushop_header', 'ushop_header_action' );
  * Hero Area
  */
 function ushop_hero_area_action(){
-    $hero_area_show = get_theme_mod( 'hero_area_show' );
-    $hero_background_image = get_theme_mod( 'hero_background_image' );
-    $hero_sub_title = get_theme_mod( 'hero_sub_title' );
-    $hero_title = get_theme_mod( 'hero_title' );
-    $hero_text = get_theme_mod( 'hero_text' );
-    $hero_button_text = get_theme_mod( 'hero_button_text' );
-    $hero_button_url = get_theme_mod( 'hero_button_url' );
+    $hero_area_show = get_theme_mod( 'hero_area_show', true );
+    $hero_sub_title = get_theme_mod( 'hero_sub_title', 'Sub title' );
+    $hero_title = get_theme_mod( 'hero_title', 'title' );
+    $hero_text = get_theme_mod( 'hero_text', 'text' );
+    $hero_button_text = get_theme_mod( 'hero_button_text', 'buy Pro' );
+    $hero_button_url = get_theme_mod( 'hero_button_url', 'http://themetim.com/wordpress-themes/ushop-pro/' );
 
     if ( $hero_area_show && is_front_page() ): ?>
         <section class="hero-area position-relative">
             <div class="container-fluid">
                 <div class="hero-content">
-                    <?php if( $hero_sub_title ) : ?>
-                        <h3 class="mb-0"><?php echo esc_html( $hero_sub_title ); ?></h3>
-                    <?php endif;?>
-                    <?php if( $hero_title ) : ?>
-                        <h2><?php echo esc_html( $hero_title ); ?></h2>
-                    <?php endif;?>
+                    <h3 class="mb-0"><?php echo esc_html( $hero_sub_title ); ?></h3>
+                    <h2><?php echo esc_html( $hero_title ); ?></h2>
                     <?php if( $hero_text ) : ?>
                         <p><?php echo esc_html( $hero_text ); ?></p>
                     <?php endif;?>
@@ -213,8 +220,8 @@ function ushop_hero_area_action(){
                     <?php endif;?>
                 </div>
             </div>
-            <?php if( $hero_background_image ): ?>
-            <img src="<?php echo $hero_background_image; ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" class="img-fluid">
+            <?php if ( get_header_image() ) : ?>
+                <img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" class="img-fluid">
             <?php endif; ?>
         </section>
     <?php endif;

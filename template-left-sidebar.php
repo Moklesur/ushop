@@ -12,7 +12,7 @@ get_header();
             <div class="container-fluid">
                 <div class="row">
                     <?php get_sidebar(); ?>
-                    <div class="col-lg-9 col-md-9 col-12">
+                    <div class="col-lg-9 col-md-9 col-12 margin-top">
                         <?php
                         while ( have_posts() ) : the_post();
 

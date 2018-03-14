@@ -17,7 +17,7 @@ $row = '';
 if ( $blog_layout_tow == 'two-column' ) {
 	$row = 'row';
 }
-$col12 = 'col-lg-9 col-md-9 ';
+$col12 = 'col-lg-9 col-md-9  ';
 if ( $blog_layout_tow == 'three-column' ) {
 	$col12 = 'col-lg-12 col-md-12 ';
 	$row = 'row';
@@ -26,7 +26,7 @@ get_header(); ?>
 	<main id="main" class="site-main">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="<?php echo $col12; ?>col-12">
+				<div class="<?php echo $col12; ?>col-12 margin-top">
 					<div class="<?php echo $row; ?>">
 						<?php
 						if ( have_posts() ) :
@@ -57,7 +57,7 @@ get_header(); ?>
 					</div>
 				</div>
 				<?php
-				if ( ! $blog_layout_tow == 'three-column' ) :
+				if ( $blog_layout_tow == 'default' || $blog_layout_tow == 'two-column' ) :
 					get_sidebar();
 				endif; ?>
 			</div>

@@ -14,9 +14,12 @@ function ushop_woocommerce_styling_deregister() {
 }
 add_action( 'wp', 'ushop_woocommerce_styling_deregister' );
 
-
-// add product category name to post class
-function category_id_class( $classes ) {
+/**
+ * @param $classes
+ * @return array
+ * add product category name to post class
+ */
+function ushop_category_id_class( $classes ) {
     global $post;
     $product_cats = get_the_terms( $post->ID, 'product_cat' );
     if( $product_cats ) foreach ( $product_cats as $category ) {
@@ -24,7 +27,7 @@ function category_id_class( $classes ) {
     }
     return $classes;
 }
-add_filter( 'post_class', 'category_id_class' );
+add_filter( 'post_class', 'ushop_category_id_class' );
 
 /**
  * Remove breadcrumbs
@@ -37,7 +40,19 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 )
 add_action('woocommerce_before_main_content', 'ushop_open_div', 5);
 
 function ushop_open_div() {
-    echo '<div class="col-xl-9 col-lg-9 col-md-12 col-xs-12 mt-50 archive-woo">';
+
+    $archive_layout = ushop_archive_layout();
+    $product_layout = ushop_product_layout();
+
+    $col12 = 'col-lg-12 col-md-12 ';
+
+    if ( is_shop() && ( $archive_layout == 'archive-default' ) || ( $archive_layout == 'archive-left-sidebar' ) ) {
+        $col12 = 'col-lg-9 col-md-9  ';
+    }elseif( is_product() && ( $product_layout == 'default' ) || ( $product_layout == 'left-sidebar' )) {
+        $col12 = 'col-lg-9 col-md-9  ';
+    }
+
+    echo '<div class="'.$col12.' col-12 archive-woo">';
 }
 
 /**
@@ -48,7 +63,6 @@ add_action('woocommerce_after_main_content', 'ushop_close_div', 50);
 function ushop_close_div() {
     echo '</div>';
 }
-
 
 /**
  * Added Row
@@ -62,14 +76,14 @@ function ushop_product_wrapper_end() {
     echo '</div>';
 }
 
-
 /**
  * Single Product
  * Added classes in product images
  */
 add_action( 'woocommerce_before_single_product_summary', 'ushop_product_images_start', 1 );
 function ushop_product_images_start() {
-    echo '<div class="col-lg-6 col-sm-6 col-12 single-product-images">';
+    $single_product_gallery_layout = get_theme_mod( 'single_product_gallery_layout', 'default' );
+    echo '<div class="col-lg-6 col-sm-6 col-12 margin-top single-product-images ushop-thumb-images-'. $single_product_gallery_layout .'">';
 }
 
 /**
@@ -79,7 +93,7 @@ function ushop_product_images_start() {
 add_action( 'woocommerce_before_single_product_summary', 'ushop_product_summary_start', 999 );
 function ushop_product_summary_start() {
     echo '</div>';
-    echo '<div class="col-lg-6 col-sm-6 col-12 single-product-summary">';
+    echo '<div class="col-lg-6 col-sm-6 col-12 single-product-summary margin-top">';
 }
 add_action( 'woocommerce_after_single_product_summary', 'ushop_product_summary_end', 0 );
 function ushop_product_summary_end() {
@@ -119,6 +133,79 @@ function ushop_header_add_to_cart_fragment( $fragments ) {
     <?php
     $fragments['a.cart-contents'] = ob_get_clean();
     return $fragments;
+}
+/**
+ * Change number or products per Columns to 3
+ */
+add_filter('loop_shop_columns', 'ushop_loop_columns');
+if (!function_exists('loop_columns')) {
+    function ushop_loop_columns() {
+        $archive_product_columns = get_theme_mod( 'archive_product_columns', '3' );
+        return $archive_product_columns; // 3 products per row
+    }
+}
+
+/**
+ * Number of products on Shop/Archive
+ */
+add_filter( 'loop_shop_per_page', 'ushop_loop_shop_per_page', 20 );
+function ushop_loop_shop_per_page( $archive_product_number ) {
+    // $cols contains the current number of products per page based on the value stored on Options -> Reading
+    // Return the number of products you wanna show per page.
+    $archive_product_number = get_theme_mod( 'archive_product_number', '9' );
+    return $archive_product_number;
+}
+
+/**
+ * Hide Product Price
+ */
+if ( true == get_theme_mod( 'archive_hide_price' )  ) {
+    remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+}
+
+/**
+ * Hide Product Ratings
+ */
+if( true == get_theme_mod( 'archive_hide_ratings' ) ){
+    remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+}
+
+/**
+ * Hide Product Sorting
+ */
+if( true == get_theme_mod( 'archive_hide_sorting' ) ){
+    remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+}
+
+/**
+ * Hide Product Number of result
+ */
+if( true == get_theme_mod( 'archive_hide_number_of_result' ) ) {
+    remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+}
+/**
+ * Hide Rating
+ */
+if( true == get_theme_mod( 'single_product_hide_rating' ) ) {
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+}
+/**
+ * Hide Up Sells
+ */
+if( true == get_theme_mod( 'single_product_hide_upsells' ) ) {
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+}
+/**
+ * Hide Related
+ */
+if( true == get_theme_mod( 'single_product_hide_related' ) ) {
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+}
+/**
+ * Hide Meta
+ */
+if( true == get_theme_mod( 'single_product_hide_meta' ) ) {
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 }
 
 /**

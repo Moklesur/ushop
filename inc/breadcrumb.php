@@ -58,7 +58,8 @@ function ushop_breadcrumbs( $args = array() ) {
             }
         }
 
-        $html .= '<span class="item-current item-' . $post->ID . '"><span title="' . esc_attr( get_the_title() ) . '"> ' . esc_html( get_the_title() ) . '</span></span>';
+        $html .= '<h1>' . esc_html( get_the_title() ) . '</h1>';
+
     } elseif ( is_singular( 'attachment' ) ) {
         $parent_id        = $post->post_parent;
         $parent_title     = get_the_title( $parent_id );

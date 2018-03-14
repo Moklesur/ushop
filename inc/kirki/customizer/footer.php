@@ -42,6 +42,13 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'       => __( 'Footer Background Color', 'ushop' ),
     'section'     => 'footer_design',
     'default'     => '#fff',
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer',
+            'property' => 'background-color',
+        ),
+    ),
 ) );
 // Footer Title Color
 Ushop_Kirki::add_field( 'ushop', array(
@@ -50,9 +57,11 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'       => __( 'Footer Title Color', 'ushop' ),
     'section'     => 'footer_design',
     'default'     => '#000',
+    'transport'	  => 'auto',
     'output'      => array(
         array(
-            'element' => '.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6',
+            'element' => '.site-footer .footer-bottom-title',
+            'property' => 'color',
         ),
     ),
 ) );
@@ -63,26 +72,40 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'       => __( 'Footer Text Color', 'ushop' ),
     'section'     => 'footer_design',
     'default'     => '#000',
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer,.site-footer a',
+            'property' => 'color',
+        ),
+    ),
 ) );
 // Footer Title Font Size
 Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'slider',
     'settings'    => 'footer_title_font_size',
-    'label'       => esc_attr__( 'Title Font size', 'ushop' ),
+    'label'       => esc_attr__( 'Footer Heading Size', 'ushop' ),
     'section'     => 'footer_design',
-    'default'     => 24,
+    'default'     => 20,
     'choices'     => array(
-        'min'  => '14',
+        'min'  => '12',
         'max'  => '60',
         'step' => '1',
     ),
-    'element' => 'site-footer.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6'
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer .footer-bottom-title',
+            'property' => 'font-size',
+            'units'    => 'px',
+        ),
+    ),
 ) );
 // Footer Text Font Size
 Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'slider',
     'settings'    => 'footer_text_font_size',
-    'label'       => esc_attr__( 'Text Font size', 'ushop' ),
+    'label'       => esc_attr__( 'Footer Text Size', 'ushop' ),
     'section'     => 'footer_design',
     'default'     => 14,
     'choices'     => array(
@@ -90,7 +113,56 @@ Ushop_Kirki::add_field( 'ushop', array(
         'max'  => '50',
         'step' => '1',
     ),
-    'element' => 'a, p, footer, li, strong,.site-footer'
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer',
+            'property' => 'font-size',
+            'units'    => 'px',
+        ),
+    ),
+) );
+// Footer Padding Top
+Ushop_Kirki::add_field( 'ushop', array(
+    'type'        => 'slider',
+    'settings'    => 'footer_padding_top',
+    'label'       => esc_attr__( 'Footer Padding Top', 'ushop' ),
+    'section'     => 'footer_design',
+    'default'     => 50,
+    'choices'     => array(
+        'min'  => '0',
+        'max'  => '100',
+        'step' => '1',
+    ),
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer',
+            'property' => 'padding-top',
+            'units'    => 'px',
+        ),
+    ),
+) );
+// Footer Padding Top
+Ushop_Kirki::add_field( 'ushop', array(
+    'type'        => 'slider',
+    'settings'    => 'footer_padding_bottom',
+    'label'       => esc_attr__( 'Footer Padding Bottom', 'ushop' ),
+    'section'     => 'footer_design',
+    'default'     => 50,
+    'choices'     => array(
+        'min'  => '0',
+        'max'  => '100',
+        'step' => '1',
+    ),
+    'transport'	  => 'auto',
+    'output'      => array(
+        array(
+            'element' => '.site-footer',
+            'property' => 'padding-bottom',
+            'units'    => 'px',
+        ),
+    ),
 ) );
 // Footer Copyright
 Ushop_Kirki::add_section( 'footer_copyright_section', array(
@@ -103,6 +175,13 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'footer_copyright',
     'label'       => esc_html__( 'Copy Right Text', 'ushop' ),
     'section'     => 'footer_copyright_section',
-    'default'     => 'Ushop Proudly powered by themetim',
+    'default'     => 'Ushop powered by themetim',
+    'transport'	  => 'postMessage',
     'priority'    => 10,
+    'js_vars'   => array(
+        array(
+            'element'  => '.site-info',
+            'function' => 'html',
+        ),
+    )
 ) );

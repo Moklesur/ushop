@@ -12,12 +12,16 @@ Ushop_Kirki::add_field( 'ushop', array(
     'priority'       => 5,
     'output'      => array(
         array(
-            'element' => '#back-to-top,.button,.widget-trending-products .view-all,.category-filter-wrap .current,.hero-content a,.account-login-dropdown a:hover, .account-login-dropdown a:last-child,.mini-cart-fix .buttons a:hover, .mini-cart-fix .buttons .checkout,button, input[type="button"], input[type="reset"], input[type="submit"], .woocommerce div.product form.cart .button, #add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button, .woocommerce .cart .button, .woocommerce .cart input.button, .cat-meta-btn,.woocommerce-message .button',
+            'element' => 'button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover,button, input[type="button"], input[type="reset"], input[type="submit"],.woocommerce div.product form.cart .button,#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,.woocommerce .cart .button, .woocommerce .cart input.button,.cat-meta-btn ,.woocommerce-pagination ul li a:hover,.woocommerce-pagination .current,.widget_price_filter .price_slider_amount .button,.woocommerce-store-notice.demo_store,.widget-trending-products .view-all,#back-to-top,.category-filter-wrap .current,.mini-cart-fix .buttons a:hover, .mini-cart-fix .buttons .checkout,.account-login-dropdown a:hover, .account-login-dropdown a:last-child',
             'property' => 'background-color',
         ),
         array(
-            'element' => '#back-to-top,.button,.widget-trending-products .view-all,.category-filter-wrap .current,.hero-content a,.account-login-dropdown a:hover, .account-login-dropdown a:last-child,.mini-cart-fix .buttons a:hover, .mini-cart-fix .buttons .checkout,button, input[type="button"], input[type="reset"], input[type="submit"], .woocommerce div.product form.cart .button, #add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button, .woocommerce .cart .button, .woocommerce .cart input.button, .cat-meta-btn,.woocommerce-message .button',
+            'element' => 'button, input[type="button"], input[type="reset"], input[type="submit"],.woocommerce div.product form.cart .button,#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,.woocommerce .cart .button, .woocommerce .cart input.button,.cat-meta-btn ,.widget_price_filter .price_slider_amount .button,a.edit, a.post-edit-link,.mini-cart-fix .buttons a:hover, .mini-cart-fix .buttons .checkout,.account-login-dropdown,.mini-cart-fix .buttons a,.woocommerce ul.products li.product .onsale, .single-product-images .onsale',
             'property' => 'border-color',
+        ),
+        array(
+            'element' => '.widget-services i',
+            'property' => 'color',
         ),
     ),
 ) );

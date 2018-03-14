@@ -35,7 +35,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'header_background_color',
     'label'       => __( 'Header Background Color', 'ushop' ),
     'section'     => 'header_section',
-    'default'     => '#fff',
+    'default'     => '',
     'transport'	  => 'auto',
     'output'      => array(
         array(
@@ -193,12 +193,12 @@ Ushop_Kirki::add_field( 'ushop', array(
     'section'     => 'menu_design',
     'default'     => array(
         'font-family'    => 'inherit',
-        'variant'        => 'inherit',
+        'variant'        => '500',
         'font-size'      => '14px',
         'line-height'    => 'inherit',
         'letter-spacing' => '0',
         'color'          => '#000',
-        'text-transform' => 'none'
+        'text-transform' => 'uppercase'
     ),
     'priority'    => 10,
     'transport'	  => 'auto',
@@ -211,67 +211,92 @@ Ushop_Kirki::add_field( 'ushop', array(
 /**
  * Hero Area
  */
-Ushop_Kirki::add_section( 'hero_area', array(
-    'title'          => esc_attr__( 'Hero Area', 'ushop' ),
+// Header Image
+Ushop_Kirki::add_section( 'header_image', array(
+    'title'          => __( 'Hero Area', 'ushop' ),
     'panel'          => 'header_panel',
-    'priority'       => 50,
+    'priority'    => 50,
 ) );
 // Hero Show
 Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'toggle',
     'settings'    => 'hero_area_show',
     'label'       => esc_attr__( 'Show Hero Area', 'ushop' ),
-    'section'     => 'hero_area',
-    'default'     => '0',
-    'priority'    => 10,
-) );
-// Hero Background image
-Ushop_Kirki::add_field( 'ushop', array(
-    'type'        => 'image',
-    'settings'    => 'hero_background_image',
-    'label'       => esc_attr__( 'Background Image', 'ushop' ),
-    'section'     => 'hero_area',
-    'default'     => '',
+    'section'     => 'header_image',
+    'default'     => true,
+    'priority'    => 5,
 ) );
 // Hero Sub Title
 Ushop_Kirki::add_field( 'ushop', array(
     'type'     => 'text',
     'settings' => 'hero_sub_title',
     'label'    => __( 'Sub Title', 'ushop' ),
-    'section'  => 'hero_area',
+    'section'  => 'header_image',
     'priority' => 10,
+    'default'  => 'Sub Title',
+    'transport'	  => 'postMessage',
+    'js_vars'   => array(
+        array(
+            'element'  => '.hero-content h3',
+            'function' => 'html',
+        ),
+    )
 ) );
 // Hero Title
 Ushop_Kirki::add_field( 'ushop', array(
     'type'     => 'text',
     'settings' => 'hero_title',
     'label'    => __( 'Title', 'ushop' ),
-    'section'  => 'hero_area',
+    'section'  => 'header_image',
+    'default'  => 'Title',
     'priority' => 10,
+    'transport'	  => 'postMessage',
+    'js_vars'   => array(
+        array(
+            'element'  => '.hero-content h2',
+            'function' => 'html',
+        ),
+    )
 ) );
 // Hero Content / Text
 Ushop_Kirki::add_field( 'ushop', array(
     'type'     => 'textarea',
     'settings' => 'hero_text',
     'label'    => __( 'Content', 'ushop' ),
-    'section'  => 'hero_area',
+    'section'  => 'header_image',
+    'default'  => 'Content',
     'priority' => 10,
+    'transport'	  => 'postMessage',
+    'js_vars'   => array(
+        array(
+            'element'  => '.hero-content p',
+            'function' => 'html',
+        ),
+    )
 ) );
 // Hero Button Text
 Ushop_Kirki::add_field( 'ushop', array(
     'type'     => 'text',
     'settings' => 'hero_button_text',
     'label'    => __( 'Button Text', 'ushop' ),
-    'section'  => 'hero_area',
+    'section'  => 'header_image',
     'priority' => 10,
+    'default'  => 'Buy Pro',
+    'transport'	  => 'postMessage',
+    'js_vars'   => array(
+        array(
+            'element'  => '.hero-content a',
+            'function' => 'html',
+        ),
+    )
 ) );
 // Hero Button Link
 Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'text',
     'settings'    => 'hero_button_url',
     'label'       => esc_attr__( 'Button URL', 'ushop' ),
-    'section'     => 'hero_area',
-    'default'     => '',
+    'section'     => 'header_image',
+    'default'     => 'http://themetim.com/wordpress-themes/ushop-pro/',
     'priority'    => 10,
 ) );
 /**
@@ -290,10 +315,4 @@ Ushop_Kirki::add_field( 'ushop', array(
     'section'     => 'sticky_header',
     'default'     => '1',
     'priority'    => 10,
-) );
-// Header Image
-Ushop_Kirki::add_section( 'header_image', array(
-    'title'          => __( 'Header Image', 'ushop' ),
-    'panel'          => 'header_panel',
-    'priority'    => 70,
 ) );

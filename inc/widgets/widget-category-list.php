@@ -25,7 +25,7 @@ class uShop_Widget_Category_List extends WP_Widget {
 
 
         echo $args['before_widget']; ?>
-        <div class="widget-category-list text-center">
+        <div class="widget-category-list">
             <?php if( $title != '' ) { ?>
                 <div class="widgets-heading">
                     <?php echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>

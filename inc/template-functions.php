@@ -32,6 +32,12 @@ function ushop_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	// Adds a class of hide-margin-top.
+	if ( is_front_page() ) {
+		$classes[] = 'hide-margin-top';
+	}
+
+	// Adds a class of woo-btn-hover-pages to Product hover.
 	if( class_exists( 'WooCommerce' ) ){
 		if ( is_woocommerce() || is_cart() ){
 			$classes[] = 'woo-btn-hover-pages';

@@ -12,10 +12,7 @@ get_header(); ?>
 		<section class="error-404 not-found">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-12 col-md-12 col-12">
-						<header class="page-header">
-							<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'ushop' ); ?></h1>
-						</header><!-- .page-header -->
+					<div class="col-lg-12 col-md-12 col-12 margin-top">
 
 						<div class="page-content">
 							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ushop' ); ?></p>

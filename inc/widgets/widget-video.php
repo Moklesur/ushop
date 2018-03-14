@@ -71,7 +71,7 @@ class uShop_Widget_YouTube extends WP_Widget {
                     <h2>
                         <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'URL', 'ushop' ); ?></label>
                         <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo $url; ?>" placeholder="<?php echo esc_attr( 'ke11sYLKUqY' );?>" />
-                        <small><?php _e( 'Past YouTube URL like ' ); ?><strong><?php _e( 'ke11sYLKUqY ' ); ?></strong><a href="<?php _e('https://www.screencast.com/t/N4jC4kgFi'); ?>" <small><?php _e( ' Get more information click here' ); ?></small>
+                        <small><?php echo esc_attr( 'Past YouTube URL like ' ); ?><strong><?php echo esc_attr( 'ke11sYLKUqY ' ); ?></strong><a href="<?php echo esc_url('https://www.screencast.com/t/N4jC4kgFi'); ?>" <small><?php echo esc_attr( ' Get more information click here' ); ?></small>
                     </h2>
                 </div>
             </div>
