@@ -25,14 +25,14 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
 
         echo $args['before_widget']; ?>
-        <div class="widget-trending-products woo-img-center add-btn-hover">
+        <div class="widget-trending-products woo-img-center add-btn-hover text-center">
             <?php if( $title != '' ) { ?>
                 <div class="widgets-heading mb-5">
                     <?php echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>
                 </div>
             <?php } ?>
             <div class="trending-products-contents">
-                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading text-left" best_selling="true" ]' );  ?>
+                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading" best_selling="true" ]' );  ?>
                 <?php if ( $view_all != '' ) : ?>
                     <a href="<?php echo esc_url( $view_all ); ?>" class="view-all text-uppercase"><?php esc_html_e( 'View All', 'ushop' ); ?></a>
                 <?php endif; ?>

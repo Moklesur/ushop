@@ -28,14 +28,14 @@ class uShop_Widget_Category_Filter extends WP_Widget {
 
 
         echo $args['before_widget']; ?>
-        <div class="widget-category-filter woo-img-center add-btn-hover">
+        <div class="widget-category-filter woo-img-center add-btn-hover text-center">
             <?php if( $title != '' ) { ?>
                 <div class="widgets-heading mb-5">
                     <?php echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>
                 </div>
             <?php } ?>
             <div class="category-filter-contents">
-                <ul class="list-inline category-filter-wrap">
+                <ul class="list-inline category-filter-wrap mb-5">
                     <li class="list-inline-item">
                         <a href="#" data-filter="*" class="current"><?php esc_html_e( 'All', 'ushop' ); ?></a>
                     </li>
@@ -105,7 +105,7 @@ class uShop_Widget_Category_Filter extends WP_Widget {
                 </div>
                 <div class="col-3">
                     <h5>
-                        <label for="<?php echo $this->get_field_id( 'columns' ); ?>"><?php _e( 'Number of products to show columns in a row.', 'ushop' ); ?></label>
+                        <label for="<?php echo $this->get_field_id( 'columns' ); ?>"><?php _e( 'Number of products to show columns in a row. ( Pro )', 'ushop' ); ?></label>
                         <input class="tiny-text" id="<?php echo $this->get_field_id( 'columns' ); ?>" name="<?php echo $this->get_field_name( 'columns' ); ?>" type="number" step="1" min="1" value="<?php echo $columns; ?>" size="3" />
                     </h5>
                 </div>

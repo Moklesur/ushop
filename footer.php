@@ -10,7 +10,7 @@
  */
 
 ?>
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="site-footer footer-layout-<?php echo get_theme_mod( 'footer_columns', 'one' ); ?>">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-12">

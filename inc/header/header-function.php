@@ -6,14 +6,14 @@
  * Logo
  */
 function ushop_logo_action() { ?>
-    <div class="col-lg-3 col-md-12 col-12">
+    <div class="col-lg-3 col-md-12 col-6">
         <div class="site-branding">
             <?php
             the_custom_logo();
             if ( is_front_page() && is_home() ) : ?>
                 <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php else : ?>
-                <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                 <?php
             endif;
 
@@ -32,11 +32,6 @@ add_action( 'ushop_logo', 'ushop_logo_action' );
  */
 function ushop_navigration_action() { ?>
     <nav class="navbar navbar-expand-lg pl-0 pr-0">
-        <div class="mobile-bar text-right">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ushop' ); ?>">
-                <i class="ion-navicon"></i>
-            </button>
-        </div>
         <?php
         wp_nav_menu( array(
                 'theme_location'    => 'menu-1',
@@ -101,6 +96,12 @@ function ushop_cart_acctount_search_action() {
         </div>
     <?php endif; ?>
 
+    <div class="mobile-bar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ushop' ); ?>">
+            <i class="ion-android-menu"></i>
+        </button>
+    </div>
+
 <?php }
 add_action( 'ushop_cart_account_search', 'ushop_cart_acctount_search_action' );
 
@@ -110,19 +111,18 @@ function ushop_header_action() {
     <section class="<?php echo $header_layout; ?> site-header">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="header-sticky-append"></div>
                 <?php
                 if( $header_layout == 'header-3' ){
                     do_action( 'ushop_logo' );
                     ?>
                     <div class="col-lg-9 col-md-9 col-12">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-12 mini-cart-search text-right">
+                            <div class="col-lg-12 col-md-12 col-6 mini-cart-search text-right">
                                 <?php
                                 do_action( 'ushop_cart_account_search' );
                                 ?>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-end position-relative main-menu">
+                            <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-lg-end position-relative main-menu">
                                 <?php
                                 do_action( 'ushop_navigration' );
                                 ?>
@@ -134,7 +134,7 @@ function ushop_header_action() {
 
                 do_action( 'ushop_logo' );
                 ?>
-                <div class="col-lg-9 col-md-9 col-12 mini-cart-search text-right">
+                <div class="col-lg-9 col-md-9 col-6 mini-cart-search text-right">
                     <?php
                     do_action( 'ushop_cart_account_search' );
                     ?>
@@ -154,12 +154,12 @@ function ushop_header_action() {
                 }else{
                     do_action( 'ushop_logo' );
                     ?>
-                    <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center main-menu">
+                    <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-lg-center main-menu">
                         <?php
                         do_action( 'ushop_navigration' );
                         ?>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-12 mini-cart-search text-right">
+                    <div class="col-lg-3 col-md-3 col-6 mini-cart-search text-right">
                         <?php
                         do_action( 'ushop_cart_account_search' );
                         ?>
@@ -199,18 +199,20 @@ add_action( 'ushop_header', 'ushop_header_action' );
  */
 function ushop_hero_area_action(){
     $hero_area_show = get_theme_mod( 'hero_area_show', true );
-    $hero_sub_title = get_theme_mod( 'hero_sub_title', 'Sub title' );
-    $hero_title = get_theme_mod( 'hero_title', 'title' );
-    $hero_text = get_theme_mod( 'hero_text', 'text' );
+    $hero_title = get_theme_mod( 'hero_title', 'Summer Collection 2018' );
+    $hero_sub_title = get_theme_mod( 'hero_sub_title' );
+    $hero_text = get_theme_mod( 'hero_text', 'The most famous ecommerce theme' );
     $hero_button_text = get_theme_mod( 'hero_button_text', 'buy Pro' );
-    $hero_button_url = get_theme_mod( 'hero_button_url', 'http://themetim.com/wordpress-themes/ushop-pro/' );
+    $hero_button_url = get_theme_mod( 'hero_button_url', 'https://www.themetim.com/wordpress-themes/ushop-pro/' );
 
     if ( $hero_area_show && is_front_page() ): ?>
         <section class="hero-area position-relative">
             <div class="container-fluid">
                 <div class="hero-content">
-                    <h3 class="mb-0"><?php echo esc_html( $hero_sub_title ); ?></h3>
                     <h2><?php echo esc_html( $hero_title ); ?></h2>
+                    <?php if( $hero_sub_title ) : ?>
+                        <h2><?php echo esc_html( $hero_sub_title ); ?></h2>
+                    <?php endif;?>
                     <?php if( $hero_text ) : ?>
                         <p><?php echo esc_html( $hero_text ); ?></p>
                     <?php endif;?>

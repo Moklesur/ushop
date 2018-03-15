@@ -34,7 +34,7 @@ Ushop_Kirki::add_field( 'ushop', array(
             'element' => 'body',
         ),
         array(
-            'element' => 'body, .search-modal a, .account-login  a, .mini-cart a,.products a,.widget-area, .widget-area a, .so-panel.widget.woocommerce a,.single-product-summary .quantity a,.woocommerce-product-gallery__trigger,.woocommerce-product-rating a,.woocommerce-cart-form a,.entry-footer a,.category-filter-wrap a,.woocommerce-MyAccount-navigation a',
+            'element' => '.page-breadcrumb a,body, .search-modal a, .account-login  a, .mini-cart a,.products a,.widget-area, .widget-area a, .so-panel.widget.woocommerce a,.single-product-summary .quantity a,.woocommerce-product-gallery__trigger,.woocommerce-product-rating a,.woocommerce-cart-form a,.entry-footer a,.category-filter-wrap a,.woocommerce-MyAccount-navigation a',
             'property' => 'color',
         ),
     ),

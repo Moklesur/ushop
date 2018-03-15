@@ -63,7 +63,7 @@ class uShop_Widget_Services extends WP_Widget {
                     ${'icon' . $i} = isset($instance['icon' . $i]) ? esc_html($instance['icon' . $i]) : '';
                     ?>
                     <div class="col-12">
-                        <h3 style="margin-bottom: 0"><?php echo sprintf( __('Service items %s', 'ushop'), $i ); ?></h3>
+                        <h3 style="margin-bottom: 0"><?php echo sprintf( __('items %s', 'ushop'), $i ); ?></h3>
                     </div>
                     <div class="col-3">
                         <label for="<?php echo $this->get_field_id( 'title' . $i ); ?>"><?php _e( 'Title', 'ushop' ); ?></label>
@@ -76,6 +76,12 @@ class uShop_Widget_Services extends WP_Widget {
                     <div class="col-3">
                         <label for="<?php echo $this->get_field_id( 'icon' . $i ); ?>"><?php _e( 'icon', 'ushop' ); ?></label>
                         <input class="widefat" id="<?php echo $this->get_field_id( 'icon' . $i ); ?>" name="<?php echo $this->get_field_name( 'icon' . $i ); ?>" type="text" value="<?php echo ${'icon' . $i}; ?>" />
+                        <small>
+                            <?php esc_html_e( 'For the icon Please', 'ushop'); ?>
+                            <a href="<?php echo esc_url( 'http://ionicons.com/' ); ?>" target="_blank">
+                                <?php esc_html_e( ' Click Here', 'ushop' );?>
+                            </a>
+                        </small>
                     </div>
                 <?php } ?>
             </div>

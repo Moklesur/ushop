@@ -65,7 +65,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'header_border_size',
     'label'       => esc_attr__( 'Border Size', 'ushop' ),
     'section'     => 'header_section',
-    'default'     => 1,
+    'default'     => 0,
     'transport'	  => 'auto',
     'choices'   => array(
         'min'  => 0,
@@ -192,7 +192,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'       => esc_attr__( 'Menu Typography', 'ushop' ),
     'section'     => 'menu_design',
     'default'     => array(
-        'font-family'    => 'inherit',
+        'font-family'    => 'Ubuntu',
         'variant'        => '500',
         'font-size'      => '14px',
         'line-height'    => 'inherit',
@@ -233,7 +233,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'    => __( 'Sub Title', 'ushop' ),
     'section'  => 'header_image',
     'priority' => 10,
-    'default'  => 'Sub Title',
+    'default'  => '',
     'transport'	  => 'postMessage',
     'js_vars'   => array(
         array(
@@ -248,7 +248,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings' => 'hero_title',
     'label'    => __( 'Title', 'ushop' ),
     'section'  => 'header_image',
-    'default'  => 'Title',
+    'default'  => 'Summer Collection 2018',
     'priority' => 10,
     'transport'	  => 'postMessage',
     'js_vars'   => array(
@@ -264,7 +264,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings' => 'hero_text',
     'label'    => __( 'Content', 'ushop' ),
     'section'  => 'header_image',
-    'default'  => 'Content',
+    'default'  => 'The most famous ecommerce theme',
     'priority' => 10,
     'transport'	  => 'postMessage',
     'js_vars'   => array(
@@ -296,7 +296,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'hero_button_url',
     'label'       => esc_attr__( 'Button URL', 'ushop' ),
     'section'     => 'header_image',
-    'default'     => 'http://themetim.com/wordpress-themes/ushop-pro/',
+    'default'     => 'https://themetim.com/wordpress-themes/ushop-pro/',
     'priority'    => 10,
 ) );
 /**

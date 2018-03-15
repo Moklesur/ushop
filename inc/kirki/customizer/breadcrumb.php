@@ -41,7 +41,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'breadcrumb_bg',
     'label'       => __( 'Background Color', 'ushop' ),
     'section'     => 'breadcrumb_section',
-    'default'     => '#e9ecef',
+    'default'     => '#f7f7f7',
     'priority'    => 30,
     'transport'	  => 'auto',
     'output'      => array(

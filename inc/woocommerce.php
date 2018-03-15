@@ -46,13 +46,13 @@ function ushop_open_div() {
 
     $col12 = 'col-lg-12 col-md-12 ';
 
-    if ( is_shop() && ( $archive_layout == 'archive-default' ) || ( $archive_layout == 'archive-left-sidebar' ) ) {
-        $col12 = 'col-lg-9 col-md-9  ';
+    if ( ( is_shop() || is_product_category() ) && ( $archive_layout == 'archive-default' ) || ( $archive_layout == 'archive-left-sidebar' ) ) {
+        $col12 = 'col-lg-9 col-md-12 ';
     }elseif( is_product() && ( $product_layout == 'default' ) || ( $product_layout == 'left-sidebar' )) {
-        $col12 = 'col-lg-9 col-md-9  ';
+        $col12 = 'col-lg-9 col-md-12 ';
     }
 
-    echo '<div class="'.$col12.' col-12 archive-woo">';
+    echo '<div class="'.$col12.' col-12 archive-woo margin-top text" >';
 }
 
 /**

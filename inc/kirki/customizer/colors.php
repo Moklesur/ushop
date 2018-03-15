@@ -35,7 +35,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'priority'       => 20,
     'output'      => array(
         array(
-            'element' => 'a',
+            'element' => 'a,.page-breadcrumb .item-current',
             'property' => 'color',
         ),
     ),
