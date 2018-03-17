@@ -40,18 +40,7 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 )
 add_action('woocommerce_before_main_content', 'ushop_open_div', 5);
 
 function ushop_open_div() {
-
-    $archive_layout = ushop_archive_layout();
-    $product_layout = ushop_product_layout();
-
-    $col12 = 'col-lg-12 col-md-12 ';
-
-    if ( ( is_shop() || is_product_category() ) && ( $archive_layout == 'archive-default' ) || ( $archive_layout == 'archive-left-sidebar' ) ) {
-        $col12 = 'col-lg-9 col-md-12 ';
-    }elseif( is_product() && ( $product_layout == 'default' ) || ( $product_layout == 'left-sidebar' )) {
-        $col12 = 'col-lg-9 col-md-12 ';
-    }
-
+    $col12 = 'col-lg-9 col-md-12 ';
     echo '<div class="'.$col12.' col-12 archive-woo margin-top text" >';
 }
 
@@ -171,36 +160,12 @@ if( true == get_theme_mod( 'archive_hide_ratings' ) ){
 }
 
 /**
- * Hide Product Sorting
- */
-if( true == get_theme_mod( 'archive_hide_sorting' ) ){
-    remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-}
-
-/**
- * Hide Product Number of result
- */
-if( true == get_theme_mod( 'archive_hide_number_of_result' ) ) {
-    remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-}
-/**
- * Hide Rating
- */
-if( true == get_theme_mod( 'single_product_hide_rating' ) ) {
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
-}
-/**
  * Hide Up Sells
  */
 if( true == get_theme_mod( 'single_product_hide_upsells' ) ) {
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 }
-/**
- * Hide Related
- */
-if( true == get_theme_mod( 'single_product_hide_related' ) ) {
-    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-}
+
 /**
  * Hide Meta
  */

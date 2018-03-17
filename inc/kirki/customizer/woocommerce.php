@@ -23,7 +23,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'choices'     => array(
         'archive-default' => esc_attr__( 'Default', 'ushop' ),
         'archive-left-sidebar' => esc_attr__( 'Left Sidebar', 'ushop' ),
-        'archive-fullwidth' => esc_attr__( 'Full Width', 'ushop' ),
+        'archive-fullwidth' => esc_attr__( 'Full Width ( Pro Version )', 'ushop' ),
     ),
 ) );
 // Number of columns
@@ -78,7 +78,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
     'settings'    => 'archive_hide_sorting',
     'priority'    => 35,
-    'label'       => esc_attr__( 'Hide Product Sorting', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Product Sorting ( Pro Version )', 'ushop' ),
     'section'     => 'product_archive_section',
     'default'     => false,
 ) );
@@ -87,7 +87,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
     'settings'    => 'archive_hide_number_of_result',
     'priority'    => 40,
-    'label'       => esc_attr__( 'Hide Product Number of result', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Product Number of result ( Pro Version )', 'ushop' ),
     'section'     => 'product_archive_section',
     'default'     => false,
 ) );
@@ -108,7 +108,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'choices'     => array(
         'default' => esc_attr__( 'Default', 'ushop' ),
         'left-sidebar' => esc_attr__( 'Left Sidebar', 'ushop' ),
-        'full-width' => esc_attr__( 'Full Width', 'ushop' ),
+        'full-width' => esc_attr__( 'Full Width ( Pro Version )', 'ushop' ),
     ),
 ) );
 // Gallery Style
@@ -123,7 +123,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'choices'     => array(
         'default' => esc_attr__( 'Default', 'ushop' ),
         'right' => esc_attr__( 'Thumb Right', 'ushop' ),
-        'left' => esc_attr__( 'Thumb Left', 'ushop' ),
+        'left' => esc_attr__( 'Thumb Left ( Pro Version )', 'ushop' ),
     ),
 ) );
 // Hide Social share
@@ -131,7 +131,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
     'settings'    => 'single_product_hide_rating',
     'priority'    => 20,
-    'label'       => esc_attr__( 'Hide Product Rating', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Product Rating ( Pro Version )', 'ushop' ),
     'section'     => 'single_product_section',
     'default'     => false,
 ) );
@@ -149,7 +149,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'type'        => 'checkbox',
     'settings'    => 'single_product_hide_related',
     'priority'    => 50,
-    'label'       => esc_attr__( 'Hide Related Product', 'ushop' ),
+    'label'       => esc_attr__( 'Hide Related Product ( Pro Version )', 'ushop' ),
     'section'     => 'single_product_section',
     'default'     => false,
 ) );

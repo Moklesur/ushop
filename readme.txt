@@ -4,7 +4,7 @@ Contributors: themetim
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.0.0
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar
+Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, sticky-post, theme-options
 
 == License ==
 
@@ -16,7 +16,7 @@ ushop is distributed under the terms of the GNU GPL
 
 == Description ==
 
-ushop is a Responsive HTML5 and CSS3 WordPress Theme created with Bootstrap 4 and ideal for news websites. Comes with the most popular siteorigine page builder.
+Ushop is a E-commerce purpose WordPress theme. Ushop features Shop & single product layout, unlimited color, live customizer, boxed and wide layout, trading product, category filter, blog options, header option and page builder support are readily available with this theme. Highly customizable, clean code, nice Google Fonts and responsiveness make your ultimate choice for E-commerce store.
 
 == Installation ==
 

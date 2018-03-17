@@ -112,25 +112,7 @@ function ushop_header_action() {
         <div class="container-fluid">
             <div class="row align-items-center">
                 <?php
-                if( $header_layout == 'header-3' ){
-                    do_action( 'ushop_logo' );
-                    ?>
-                    <div class="col-lg-9 col-md-9 col-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-6 mini-cart-search text-right">
-                                <?php
-                                do_action( 'ushop_cart_account_search' );
-                                ?>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-lg-end position-relative main-menu">
-                                <?php
-                                do_action( 'ushop_navigration' );
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                }elseif( $header_layout == 'header-2' ){
+                if( $header_layout == 'header-2' ){
 
                 do_action( 'ushop_logo' );
                 ?>

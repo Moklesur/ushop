@@ -119,7 +119,7 @@ function ushop_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="footer-bottom-widget mb-5 %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="footer-bottom-title mb-3">',
+		'before_title'  => '<h4 class="footer-bottom-title mb-4">',
 		'after_title'   => '</h4>'
 	);
 	register_sidebars( 4, $args_footer_widgets );
@@ -129,9 +129,9 @@ function ushop_widgets_init() {
 			'name'          => __( 'WooCommerce', 'ushop' ),
 			'id'            => 'woocommerce-sidebar',
 			'description'   => esc_html__( 'Add widgets here to appear in your WooCommerce sidebar.', 'ushop' ),
-			'before_widget' => '<div id="%1$s" class="woo-widget  mb-5 %2$s">',
+			'before_widget' => '<div id="%1$s" class="woo-widget mb-5 %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h4 class="woo-widget-title mb-3">',
+			'before_title'  => '<h4 class="woo-widget-title mb-4">',
 			'after_title'   => '</h4>',
 		) );
 	}

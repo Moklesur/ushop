@@ -27,7 +27,7 @@ if ( $product_layout == 'left-sidebar' ) {
 }
 
 get_header( 'shop' ); ?>
-	<div class="container-fluid product-<?php echo get_theme_mod( 'single_product_layout', 'full-width' ); ?>">
+	<div class="container-fluid product-<?php echo $product_layout; ?>">
 		<div class="<?php echo $row; ?>">
 			<?php
 			/**
