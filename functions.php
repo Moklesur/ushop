@@ -54,7 +54,6 @@ if ( ! function_exists( 'ushop_setup' ) ) :
 		 * to output valid HTML5.
 		 */
 		add_theme_support( 'html5', array(
-			'search-form',
 			'comment-form',
 			'comment-list',
 			'gallery',
@@ -197,9 +196,9 @@ function ushop_scripts() {
 	wp_enqueue_style( 'ushop-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'ushop-mobile', get_template_directory_uri() . '/css/mobile.css', array(), '1.0' );
 
-	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.8.0', true );
-	wp_enqueue_script( 'popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.5', true );
-	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/isotope.pkgd.js', array('jquery'), '3.0.4', true );
+	wp_enqueue_script( 'jquery-slick', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.8.0', true );
+	wp_enqueue_script( 'jquery-popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.5', true );
+	wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/isotope.pkgd.js', array('jquery'), '3.0.4', true );
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
 	wp_enqueue_script( 'ushop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true );
 

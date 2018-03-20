@@ -104,6 +104,9 @@
 .ushop-wrap .accordion-contents{
   padding: 0 15px;
 }
+.heading-services{
+  margin-bottom: 0;
+}
 @media(max-width:767px){
   .ushop-wrap .col-3{
     width: 100%;
@@ -121,4 +124,7 @@
 }
 .ushop-author-link-label{
   margin-bottom: -4px;
+}
+.pro-section,#accordion-section-ushop_get_pro{
+  display: block !important;
 }

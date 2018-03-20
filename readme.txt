@@ -4,7 +4,7 @@ Contributors: themetim
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.0.0
-Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, sticky-post, theme-options
+Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, theme-options
 
 == License ==
 
