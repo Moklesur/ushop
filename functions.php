@@ -16,13 +16,6 @@ if ( ! function_exists( 'ushop_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function ushop_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on ushop, use a find and replace
-		 * to change 'ushop' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'ushop', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -143,7 +136,6 @@ function ushop_widgets_init() {
 		register_widget( 'uShop_Widget_Category_List' );
 	}
 	register_widget( 'uShop_Widget_Feature_Box' );
-	register_widget( 'uShop_Widget_YouTube' );
 	register_widget( 'uShop_Widget_Recent_Blog' );
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
@@ -155,7 +147,6 @@ require get_template_directory() . '/inc/widgets/widget-services.php';
 require get_template_directory() . '/inc/widgets/widget-treading-products.php';
 require get_template_directory() . '/inc/widgets/widget-category-filter.php';
 require get_template_directory() . '/inc/widgets/widget-category-list.php';
-require get_template_directory() . '/inc/widgets/widget-video.php';
 require get_template_directory() . '/inc/widgets/widget-recent-blog.php';
 require get_template_directory() . '/inc/widgets/widgets.php';
 /**
@@ -199,7 +190,7 @@ function ushop_scripts() {
 	wp_enqueue_script( 'jquery-slick', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.8.0', true );
 	wp_enqueue_script( 'jquery-popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.5', true );
 	wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/isotope.pkgd.js', array('jquery'), '3.0.4', true );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
+	wp_enqueue_script( 'jquery-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
 	wp_enqueue_script( 'ushop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -312,4 +303,21 @@ function ushop_archive_layout() {
 function ushop_product_layout() {
 	$product_layout = get_theme_mod( 'single_product_layout','default' );
 	return $product_layout;
+}
+
+/**
+ * Kirki Plugin Admin Notice Dismiss
+ */
+add_action( 'admin_notices', 'ushop_plugin_dismiss_notice' );
+function ushop_plugin_dismiss_notice() {
+    $user_id = get_current_user_id();
+    if ( !get_user_meta( $user_id, 'ushop_kirki_plugin_dismissed' ) )
+        echo '<p><a href="?ushop_kirki_dismissed">'.esc_html( 'Dismiss' ).'</a></p>';
+}
+
+add_action( 'admin_init', 'ushop_kirki_plugin_dismissed' );
+function ushop_kirki_plugin_dismissed() {
+    $user_id = get_current_user_id();
+    if ( isset( $_GET['ushop_kirki_dismissed'] ) )
+        add_user_meta( $user_id, 'ushop_kirki_plugin_dismissed', 'true', true );
 }

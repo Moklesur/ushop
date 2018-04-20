@@ -37,7 +37,7 @@ function ushop_navigration_action() { ?>
                 'theme_location'    => 'menu-1',
                 'container'			=> 'div',
                 'container_class'	=> 'collapse navbar-collapse',
-                'container_id'		=> 'bs-example-navbar-collapse-1',
+                'container_id'		=> 'ushop-navbar-collapse',
                 'menu_class'		=> 'navbar-nav',
                 'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
                 'walker'			=> new WP_Bootstrap_Navwalker()
@@ -72,11 +72,11 @@ function ushop_cart_acctount_search_action() {
                 <a class="" href="#" role="button" id="header-search-id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion-ios-person"></i></a>
                 <div class="dropdown-menu account-login-dropdown">
                     <?php if ( is_user_logged_in() ) { ?>
-                        <a class="d-block" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><i class="ion-ios-person-outline"></i> <?php esc_html_e('My Account','ushop'); ?></a>
-                        <a class="d-block" href="<?php echo wp_logout_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) )?>"><i class="ion-log-out"></i> <?php esc_html_e('Log Out','ushop'); ?></a>
+                        <a class="d-block" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>"><i class="ion-ios-person-outline"></i> <?php esc_html_e('My Account','ushop'); ?></a>
+                        <a class="d-block" href="<?php echo esc_url( wp_logout_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ) ); ?>"><i class="ion-log-out"></i> <?php esc_html_e('Log Out','ushop'); ?></a>
                     <?php }
                     else { ?>
-                        <a class="d-block" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"><i class="ion-log-in"></i> <?php esc_html_e('Login / Register','ushop'); ?></a>
+                        <a class="d-block" href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ); ?>"><i class="ion-log-in"></i> <?php esc_html_e('Login / Register','ushop'); ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -97,7 +97,7 @@ function ushop_cart_acctount_search_action() {
     <?php endif; ?>
 
     <div class="mobile-bar">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ushop' ); ?>">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ushop-navbar-collapse" aria-controls="ushop-navbar-collapse" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'ushop' ); ?>">
             <i class="ion-android-menu"></i>
         </button>
     </div>
@@ -181,11 +181,11 @@ add_action( 'ushop_header', 'ushop_header_action' );
  */
 function ushop_hero_area_action(){
     $hero_area_show = get_theme_mod( 'hero_area_show', true );
-    $hero_title = get_theme_mod( 'hero_title', 'Summer Collection 2018' );
+    $hero_title = get_theme_mod( 'hero_title' );
     $hero_sub_title = get_theme_mod( 'hero_sub_title' );
-    $hero_text = get_theme_mod( 'hero_text', 'The most famous ecommerce theme' );
-    $hero_button_text = get_theme_mod( 'hero_button_text', 'buy Pro' );
-    $hero_button_url = get_theme_mod( 'hero_button_url', 'https://www.themetim.com/wordpress-themes/ushop-pro/' );
+    $hero_text = get_theme_mod( 'hero_text' );
+    $hero_button_text = get_theme_mod( 'hero_button_text' );
+    $hero_button_url = get_theme_mod( 'hero_button_url' );
 
     if ( $hero_area_show && is_front_page() ): ?>
         <section class="hero-area position-relative">

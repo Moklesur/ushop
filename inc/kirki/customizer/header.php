@@ -248,7 +248,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings' => 'hero_title',
     'label'    => __( 'Title', 'ushop' ),
     'section'  => 'header_image',
-    'default'  => 'Summer Collection 2018',
+    'default'  => '',
     'priority' => 10,
     'transport'	  => 'postMessage',
     'js_vars'   => array(
@@ -264,7 +264,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings' => 'hero_text',
     'label'    => __( 'Content', 'ushop' ),
     'section'  => 'header_image',
-    'default'  => 'The most famous ecommerce theme',
+    'default'  => '',
     'priority' => 10,
     'transport'	  => 'postMessage',
     'js_vars'   => array(
@@ -281,7 +281,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'label'    => __( 'Button Text', 'ushop' ),
     'section'  => 'header_image',
     'priority' => 10,
-    'default'  => 'Buy Pro',
+    'default'  => '',
     'transport'	  => 'postMessage',
     'js_vars'   => array(
         array(
@@ -296,7 +296,7 @@ Ushop_Kirki::add_field( 'ushop', array(
     'settings'    => 'hero_button_url',
     'label'       => esc_attr__( 'Button URL', 'ushop' ),
     'section'     => 'header_image',
-    'default'     => 'https://themetim.com/wordpress-themes/ushop-pro/',
+    'default'     => '',
     'priority'    => 10,
 ) );
 /**

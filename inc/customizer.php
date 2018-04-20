@@ -123,7 +123,10 @@ function ushop_magazine_sections_pro( $wp_customize ) {
 /**
  * Early exit if Kirki exists.
  */
-require get_template_directory() . '/inc/kirki/include-kirki.php';
+$user_id = get_current_user_id();
+if ( !get_user_meta( $user_id, 'ushop_kirki_plugin_dismissed' ) ){
+    require get_template_directory() . '/inc/kirki/include-kirki.php';
+}
 require get_template_directory() . '/inc/kirki/ushop-kirki.php';
 /**
  * Kirki Customizer settings

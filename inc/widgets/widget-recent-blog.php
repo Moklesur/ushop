@@ -38,7 +38,7 @@ class uShop_Widget_Recent_Blog extends WP_Widget {
         if ($recent_posts->have_posts()) :
             ?>
             <div class="widget-recent-blog row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-12 text-center">
                     <?php if ( $title ) echo $args['before_title'] . $title . $args['after_title']; ?>
                 </div>
                 <?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>

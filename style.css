@@ -3,10 +3,11 @@ Theme Name: ushop
 Theme URI: https://www.themetim.com/wordpress-themes/ushop
 Author: themetim
 Author URI: https://www.themetim.com/
-Description: Ushop is a E-commerce purpose WordPress theme. Ushop features Shop & single product layout, unlimited color, live customizer, boxed and wide layout, trading product, category filter, blog options, header option and page builder support are readily available with this theme. Highly customizable, clean code, nice Google Fonts and responsiveness make your ultimate choice for E-commerce store.
-Version: 1.2
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Description: Ushop is a full featured e-commarce wordpress theme specially build for any kind of online store. Theme is compatible with woocommarce. Fully responsive layout that supports every device. Clean, modern and selling oriented design comes with full customisation options like header styles, unlimited color, woocommerce settings, breadcrumb, product settings, blog options and many more.
+
+Version: 1.7
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: ushop
 Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, theme-options
 */
@@ -96,6 +97,9 @@ body.boxed{
 .margin-top{
 	margin-top: 30px;
 }
+.collapse.in{
+	display: block;
+}
 .hide-margin-top .margin-top{
 	margin-top: 0;
 }
@@ -114,6 +118,9 @@ body.boxed{
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.site-title {
+	font-size: 24px;
+}
 .mobile-bar{
 	display: none;
 }
@@ -393,6 +400,9 @@ body.boxed{
 /*--------------------------------------------------------------
 # WooCommerce
 --------------------------------------------------------------*/
+.price_slider_amount input[type="text"]{
+	opacity: 0;
+}
 .login button{
 	margin-right: 15px;
 }
@@ -854,7 +864,7 @@ ul.products .added_to_cart{
 	content: '';
 	height: 100%;
 	width: 100%;
-	background: rgba(48, 55, 59, .5);
+	background: rgba(48, 55, 59, .25);
 	top: 0;
 	position: absolute;
 	left: 0;

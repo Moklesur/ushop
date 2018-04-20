@@ -16,7 +16,7 @@ ushop is distributed under the terms of the GNU GPL
 
 == Description ==
 
-Ushop is a E-commerce purpose WordPress theme. Ushop features Shop & single product layout, unlimited color, live customizer, boxed and wide layout, trading product, category filter, blog options, header option and page builder support are readily available with this theme. Highly customizable, clean code, nice Google Fonts and responsiveness make your ultimate choice for E-commerce store.
+Ushop is a full featured e-commarce wordpress theme specially build for any kind of online store. Theme is compatible with woocommarce. Fully responsive layout that supports every device. Clean, modern and selling oriented design comes with full customisation options like header styles, unlimited color, woocommerce settings, breadcrumb, product settings, blog options and many more.
 
 == Installation ==
 
