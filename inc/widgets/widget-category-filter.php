@@ -106,7 +106,7 @@ class uShop_Widget_Category_Filter extends WP_Widget {
                 <div class="col-3">
                     <h5>
                         <label for="<?php echo $this->get_field_id( 'columns' ); ?>"><?php _e( 'Number of products to show columns in a row. ( Pro )', 'ushop' ); ?></label>
-                        <input class="tiny-text" id="<?php echo $this->get_field_id( 'columns' ); ?>" name="<?php echo $this->get_field_name( 'columns' ); ?>" type="number" step="1" min="1" value="<?php echo $columns; ?>" size="3" />
+                        <input class="tiny-text" id="<?php echo $this->get_field_id( 'columns' ); ?>" name="<?php echo $this->get_field_name( 'columns' ); ?>" type="number" step="1" min="2" max="4" value="<?php echo $columns; ?>" size="3" />
                     </h5>
                 </div>
             </div>

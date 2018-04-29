@@ -91,7 +91,7 @@ class uShop_Widget_Category_List extends WP_Widget {
                 </div>
                 <div class="col-12">
                     <h5>
-                        <label for="<?php echo $this->get_field_id( 'select_category' ); ?>"><?php _e( 'Choose the categories you wish to display products from:', 'ushop' ); ?></label>
+                        <label for="<?php echo $this->get_field_id( 'select_category' ); ?>"><?php _e( 'Choose the categories you wish to display Category from:', 'ushop' ); ?></label>
                         <select data-placeholder="<?php echo __('Select the categories you wish to display posts from.', 'ushop'); ?>" multiple="multiple" name="<?php echo $this->get_field_name( 'select_category' ); ?>" id="<?php echo $this->get_field_id( 'select_category' ); ?>" class="widefat trending-posts-dropdown">
                             <?php
                             $cats = get_categories( array('taxonomy' => 'product_cat' ) );

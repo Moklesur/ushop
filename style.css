@@ -5,7 +5,7 @@ Author: themetim
 Author URI: https://www.themetim.com/
 Description: Ushop is a full featured e-commarce wordpress theme specially build for any kind of online store. Theme is compatible with woocommarce. Fully responsive layout that supports every device. Clean, modern and selling oriented design comes with full customisation options like header styles, unlimited color, woocommerce settings, breadcrumb, product settings, blog options and many more.
 
-Version: 1.7
+Version: 1.10
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: ushop
@@ -610,7 +610,7 @@ body.boxed{
 ul.products{
 	text-align: center;
 }
-.woocommerce ul.products li.product .onsale,.single-product-images .onsale{
+.treading-products .onsale,.woocommerce ul.products li.product .onsale,.single-product-images .onsale{
 	font-weight: inherit;
 	border-radius: 0;
 	min-height: inherit;
@@ -780,15 +780,21 @@ ul.products .added_to_cart{
 	left: 0;
 	z-index: 10;
 	cursor: pointer;
-	min-width: 48px;
 	background: #1fc0a0;
 	color: #fff;
 	text-align: center;
 	border-radius: 100%;
+	height: 35px;
+	width: 35px;
+	line-height: 35px;
+	font-size: 18px;
 }
 .treading-products .ion-ios-arrow-right{
 	left: auto;
 	right: 0;
+}
+.treading-products .star-rating {
+	margin: 0 auto;
 }
 .widget-trending-products ul{
 	margin-bottom: 0;

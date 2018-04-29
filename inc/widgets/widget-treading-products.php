@@ -23,6 +23,12 @@ class uShop_Widget_Trending_Products extends WP_Widget {
         $title = ( !empty($instance['title']) ) ? $instance['title'] : '';
         $view_all = ( !empty($instance['view_all']) ) ? $instance['view_all'] : '';
         $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 3;
+        $enable_slider = ! empty( $instance[ 'slider' ] ) ? 1 : 0;
+
+        $slider_class = '';
+        if ( $enable_slider == true ){
+            $slider_class = '-products';
+        }
 
         echo $args['before_widget']; ?>
         <div class="widget-trending-products woo-img-center add-btn-hover text-center">
@@ -32,7 +38,7 @@ class uShop_Widget_Trending_Products extends WP_Widget {
                 </div>
             <?php } ?>
             <div class="trending-products-contents">
-                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading" best_selling="true" ]' );  ?>
+                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading'. $slider_class .'" best_selling="true" ]' );  ?>
                 <?php if ( $view_all != '' ) : ?>
                     <a href="<?php echo esc_url( $view_all ); ?>" class="view-all text-uppercase"><?php esc_html_e( 'View All', 'ushop' ); ?></a>
                 <?php endif; ?>
@@ -78,7 +84,7 @@ class uShop_Widget_Trending_Products extends WP_Widget {
                     <h5>
                         <label>
                             <input class="checkbox" type="checkbox" name="<?php echo $this->get_field_name( 'slider' ); ?>" id="<?php echo $this->get_field_id( 'slider' ); ?>" value="1" <?php checked( $slider, '1' ); ?>>
-                            <span><?php _e( 'Enable Slider ( Pro )', 'ushop' ); ?></span>
+                            <span><?php _e( 'Enable Slider', 'ushop' ); ?></span>
                         </label>
                     </h5>
                 </div>

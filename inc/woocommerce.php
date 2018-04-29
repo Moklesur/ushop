@@ -3,6 +3,17 @@ if ( ! class_exists( 'WooCommerce' ) ) {
     return;
 }
 /**
+ * Gallery WC Support
+ */
+function ushop_gallery_thumns_wc_support() {
+
+    add_theme_support( 'woocommerce', array(
+        'gallery_thumbnail_image_width' => 600,
+    ) );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+}
+add_action( 'after_setup_theme', 'ushop_gallery_thumns_wc_support' );
+/**
  * Remove cross-sells at cart
  */
 remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
