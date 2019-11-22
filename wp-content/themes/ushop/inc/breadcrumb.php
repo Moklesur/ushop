@@ -77,7 +77,10 @@ function ushop_breadcrumbs( $args = array() ) {
 
         if ( class_exists( 'WooCommerce' ) ) {
             if( is_product() ){
-                $html .= '<h1>' . esc_html( 'shop' ) . '</h1>';
+                $shop_page_id = wc_get_page_id( 'shop' );
+                $html .= '<h1>' . $title['title'] = get_the_title( $shop_page_id ) . '</h1>';
+            }else{
+                $html .= '<h1>' . $post->post_title . '</h1>';
             }
         } else {
             $html .= '<h1>' . $post->post_title . '</h1>';
@@ -131,11 +134,28 @@ function ushop_breadcrumbs( $args = array() ) {
         $html .= $separator;
         $html .= '<span class="item-current item-year"><span class="bread-current bread-year">' . esc_html( get_the_date( 'Y' ) ) . '</span></span>';
     } elseif ( is_archive() ) {
+
         $custom_tax_name = get_queried_object()->name;
-        $html .= '<h1>' . esc_html( $custom_tax_name ) . '</h1>';
-        $html .= $home;
-        $html .= $separator;
-        $html .= '<span class="item-current item-archive"><span class="bread-current bread-archive">' . esc_html( $custom_tax_name ) . '</span></span>';
+
+        if ( class_exists( 'WooCommerce' ) ) {
+            if( is_shop() ){
+                $shop_page_id = wc_get_page_id( 'shop' );
+                $html .= '<h1>' . $title['title'] = get_the_title( $shop_page_id ) . '</h1>';
+                $html .= $home;
+                $html .= $separator;
+                $html .= '<span class="item-current item-archive"><span class="bread-current bread-archive">' . esc_html( $title['title'] = get_the_title( $shop_page_id ) ) . '</span></span>';
+            }else{
+                $html .= '<h1>' . esc_html( $custom_tax_name ) . '</h1>';
+                $html .= $home;
+                $html .= $separator;
+                $html .= '<span class="item-current item-archive"><span class="bread-current bread-archive">' . esc_html( $custom_tax_name ) . '</span></span>';
+            }
+        } else {
+            $html .= '<h1>' . esc_html( $custom_tax_name ) . '</h1>';
+            $html .= $home;
+            $html .= $separator;
+            $html .= '<span class="item-current item-archive"><span class="bread-current bread-archive">' . esc_html( $custom_tax_name ) . '</span></span>';
+        }
     } elseif ( is_search() ) {
         $html .= '<h1>'. __( ' Search results for : ', 'ushop') . get_search_query() . '</h1>';
         $html .= $home;

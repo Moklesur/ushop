@@ -239,12 +239,12 @@ require get_template_directory() . '/inc/breadcrumb.php';
 /**
  * woocommerce support
  */
-function timagazine_woocommerce_support() {
+function ushop_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-zoom' );
 }
-add_action( 'after_setup_theme', 'timagazine_woocommerce_support' );
+add_action( 'after_setup_theme', 'ushop_woocommerce_support' );
 /**
  * Load WP Bootstrap Nav Walker file.
  */
@@ -320,4 +320,68 @@ function ushop_kirki_plugin_dismissed() {
     $user_id = get_current_user_id();
     if ( isset( $_GET['ushop_kirki_dismissed'] ) )
         add_user_meta( $user_id, 'ushop_kirki_plugin_dismissed', 'true', true );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function cfwc_create_custom_field() {
+    $sub_title = array(
+        'id'            => 'sub_title',
+        'label'         => __( 'Secondary Name', 'cfwc' ),
+        'class'					=> 'cfwc-custom-field'
+    );
+
+    woocommerce_wp_text_input( $sub_title );
+
+    $tertiary = array(
+        'id'            => 'tertiary',
+        'label'         => __( 'Tertiary Name', 'cfwc' ),
+        'class'					=> 'cfwc-custom-field'
+    );
+
+    woocommerce_wp_text_input( $tertiary );
+}
+add_action( 'woocommerce_product_options_inventory_product_data', 'cfwc_create_custom_field' );
+
+
+/**
+ * Save the custom field
+ * @since 1.0.0
+ */
+function cfwc_save_custom_field( $post_id ) {
+    $product = wc_get_product( $post_id );
+
+    $sub_title = isset( $_POST['sub_title'] ) ? $_POST['sub_title'] : '';
+    $tertiary = isset( $_POST['tertiary'] ) ? $_POST['tertiary'] : '';
+
+    $product->update_meta_data( 'sub_title', sanitize_text_field( $sub_title ),'_title' );
+    $product->update_meta_data( 'tertiary', sanitize_text_field( $tertiary ),'_tertiary' );
+    $product->save();
+
+
+}
+add_action( 'woocommerce_process_product_meta', 'cfwc_save_custom_field' );
+
+
+
+add_action( 'woocommerce_after_shop_loop_item_title', 'bbloomer_custom_action', 15 );
+function bbloomer_custom_action() {
+
+
+// Get the product price (from this course ID):
+    $sub_title = get_post_meta('1864', 'sub_title_title', true);
+    $tertiary = get_post_meta('1864', 'tertiary_tertiary', true);
+
+    echo '<h5>'.$sub_title.'</h5><h6>'.$tertiary.'</h6>';
 }

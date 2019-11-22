@@ -1,0 +1,14 @@
+.idea
+.htaccess
+
+wp-admin
+wp-includes
+wp-config.php
+index.php
+wp-content/uploads
+!wp-content/themes/ushop/index.php
+wp-content/upgrade
+wp-content/debug.log
+wp-content/plugins
+wp-content/cache
+wp-content/languages

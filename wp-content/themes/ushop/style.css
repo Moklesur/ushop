@@ -5,7 +5,7 @@ Author: themetim
 Author URI: https://www.themetim.com/
 Description: Ushop is a full featured e-commarce wordpress theme specially build for any kind of online store. Theme is compatible with woocommarce. Fully responsive layout that supports every device. Clean, modern and selling oriented design comes with full customisation options like header styles, unlimited color, woocommerce settings, breadcrumb, product settings, blog options and many more.
 
-Version: 1.10
+Version: 1.18
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: ushop
@@ -93,6 +93,9 @@ body.boxed{
 	max-width: 1400px;
 	margin: 0 auto;
 	background: #fff;
+}
+.boxed.has_sticky .site-header{
+	width: 1400px;
 }
 .margin-top{
 	margin-top: 30px;
@@ -228,6 +231,10 @@ body.boxed{
 	margin-top: 0;
 	-webkit-transform: scaleX(1);
 	transform: scaleX(1);
+}
+.main-menu .dropdown .dropdown-menu .dropdown > .dropdown-menu {
+	top: 0;
+	left: 100%;
 }
 .main-menu a{
 	font-family: 'Ubuntu', sans-serif;
@@ -885,6 +892,10 @@ ul.products .added_to_cart{
 	font-size: 14px;
 	margin-bottom: 15px;
 }
+.woocommerce-checkout span.woocommerce-input-wrapper {
+	display: block;
+	width: 100%;
+}
 /*--------------------------------------------------------------
 # Single Product
 --------------------------------------------------------------*/
@@ -978,7 +989,7 @@ ul.products .added_to_cart{
 	margin-right: 30px;
 }
 .single-product-summary .button{
-	width: 34%;
+	width: auto;
 }
 .single-product-summary .quantity input[type="number"]{
 	padding: .62555rem 0 .62555rem 30px;
@@ -1440,6 +1451,7 @@ ul.products .added_to_cart{
 .woocommerce-cart thead tr th{
 	font-size: 18px;
 	padding: 25px 0;
+	border-bottom: 1px solid #f7f7f7;
 }
 .woocommerce-cart td{
 	font-size: 16px;
@@ -1629,11 +1641,11 @@ ul.products .added_to_cart{
 	background-color: #f7f7f7;
 	padding: 9px 15px;
 }
-.woocommerce-checkout .woocommerce form #customer_details input{
+.woocommerce-checkout .woocommerce form .woocommerce-billing-fields input{
 	width: 100%;
 	display: block;
 }
-.woocommerce-checkout form #customer_details #createaccount{
+.woocommerce-checkout form .woocommerce-billing-fields #createaccount{
 	width: auto;
 }
 .woocommerce-checkout .woocommerce form .select2-container .select2-selection--single {

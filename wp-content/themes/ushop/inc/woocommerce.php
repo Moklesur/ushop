@@ -120,20 +120,6 @@ function ushop_single_gallery_query() { ?>
     </div>
     <?php
 }
-
-/**
- * Update contents count via AJAX
- */
-add_filter('woocommerce_add_to_cart_fragments', 'ushop_header_add_to_cart_fragment');
-function ushop_header_add_to_cart_fragment( $fragments ) {
-    global $woocommerce;
-    ob_start();
-    ?>
-    <a class="cart-contents" href="<?php echo esc_url( $woocommerce->cart->get_cart_url() ); ?>"><i class="ion-bag"></i><span><?php echo sprintf(_n(' %d', ' %d', $woocommerce->cart->cart_contents_count, 'ushop'), $woocommerce->cart->cart_contents_count ); ?></span></a>
-    <?php
-    $fragments['a.cart-contents'] = ob_get_clean();
-    return $fragments;
-}
 /**
  * Change number or products per Columns to 3
  */
@@ -197,3 +183,30 @@ function ushop_quantity_buttons() { ?>
     <a href="#" class="qty-plus q-add qty-fix"><i class="ion-plus"></i></a>
     <a href="#" class="qty-minus q-min qty-fix"><i class="ion-minus"></i></a>
 <?php }
+
+/**
+ * Update mini-cart when products are added to the cart via AJAX
+ */
+add_filter( 'woocommerce_add_to_cart_fragments', function( $fragments ) {
+    ob_start();
+    ?>
+    <div class="mini-cart-fix">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+    <?php $fragments['div.mini-cart-fix'] = ob_get_clean();
+    return $fragments;
+} );
+
+/**
+ * Update contents count via AJAX
+ */
+add_filter('woocommerce_add_to_cart_fragments', 'ushop_header_add_to_cart_fragment');
+function ushop_header_add_to_cart_fragment( $fragments ) {
+    global $woocommerce;
+    ob_start();
+    ?>
+    <a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="ion-bag"></i><span><?php echo sprintf(_n(' %d', ' %d', $woocommerce->cart->cart_contents_count, 'ushop'), $woocommerce->cart->cart_contents_count ); ?></span></a>
+    <?php
+    $fragments['a.cart-contents'] = ob_get_clean();
+    return $fragments;
+}
