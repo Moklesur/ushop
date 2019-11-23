@@ -127,34 +127,65 @@ function ushop_widgets_init() {
 			'after_title'   => '</h4>',
 		) );
 	}
-
-	// Register Widgets
-	register_widget( 'uShop_Widget_Services' );
-	if ( class_exists( 'WooCommerce' ) ) {
-		register_widget( 'uShop_Widget_Trending_Products' );
-		register_widget( 'uShop_Widget_Category_Filter' );
-		register_widget( 'uShop_Widget_Category_List' );
-	}
-	register_widget( 'uShop_Widget_Feature_Box' );
-	register_widget( 'uShop_Widget_Recent_Blog' );
+	// SO Plugin
+    if ( class_exists( 'SiteOrigin_Widget' ) ) {
+        // Register Widgets
+        register_widget('uShop_Widget_Services');
+        if (class_exists('WooCommerce')) {
+            register_widget('uShop_Widget_Trending_Products');
+            register_widget('uShop_Widget_Category_Filter');
+            register_widget('uShop_Widget_Category_List');
+        }
+        register_widget('uShop_Widget_Feature_Box');
+        register_widget('uShop_Widget_Recent_Blog');
+    }
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
 
 /**
- * Widgets
- */
-require get_template_directory() . '/inc/widgets/widget-services.php';
-require get_template_directory() . '/inc/widgets/widget-treading-products.php';
-require get_template_directory() . '/inc/widgets/widget-category-filter.php';
-require get_template_directory() . '/inc/widgets/widget-category-list.php';
-require get_template_directory() . '/inc/widgets/widget-recent-blog.php';
-require get_template_directory() . '/inc/widgets/widgets.php';
-/**
  * Load Site Origin Bundle
  */
 if ( class_exists( 'SiteOrigin_Widget' ) ) {
+    require get_template_directory() . '/inc/widgets/widget-services.php';
+    require get_template_directory() . '/inc/widgets/widget-treading-products.php';
+    require get_template_directory() . '/inc/widgets/widget-category-filter.php';
+    require get_template_directory() . '/inc/widgets/widget-category-list.php';
+    require get_template_directory() . '/inc/widgets/widget-recent-blog.php';
+    require get_template_directory() . '/inc/widgets/widgets.php';
+
 	require get_template_directory() . '/inc/widgets/so-widget.php';
 }
+
+/**
+ * Elementor widgets
+ */
+function bring_back_elementor_widgets() {
+
+    if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
+        require get_template_directory() . '/plugin/hero-banner.php';
+        require get_template_directory() . '/plugin/services-icon.php';
+        require get_template_directory() . '/plugin/treading-products.php';
+    }
+
+}
+add_action( 'elementor/widgets/widgets_registered', 'bring_back_elementor_widgets' );
+
+/**
+ * @param $elements_manager
+ * elementor Category Name
+ */
+function ushop_elementor_widget_categories( $elements_manager ) {
+
+    $elements_manager->add_category(
+        'ushop',
+        array(
+            'title' => __( 'Ushop Widgets', 'ushop' ),
+            'icon' => 'fa fa-plug',
+        )
+    );
+
+}
+add_action( 'elementor/elements/categories_registered', 'ushop_elementor_widget_categories' );
 
 /**
  * Scripts and styles for the Page Builder plugin
@@ -191,7 +222,9 @@ function ushop_scripts() {
 	wp_enqueue_script( 'jquery-popper', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1.12.5', true );
 	wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/isotope.pkgd.js', array('jquery'), '3.0.4', true );
 	wp_enqueue_script( 'jquery-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.0.0', true );
-	wp_enqueue_script( 'ushop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'ushop-elementor-slider', get_template_directory_uri() . '/js/elementor-slider.js', array('jquery'), wp_get_theme()->get( 'Version' ), true );
+
+    wp_enqueue_script( 'ushop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -262,9 +295,9 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'timagazine_active_plugins' );
+add_action( 'tgmpa_register', 'ushop_active_plugins' );
 
-function timagazine_active_plugins() {
+function ushop_active_plugins() {
 	$plugins = array(
 		array(
 			'name'      => 'Contact Form 7',
@@ -320,68 +353,4 @@ function ushop_kirki_plugin_dismissed() {
     $user_id = get_current_user_id();
     if ( isset( $_GET['ushop_kirki_dismissed'] ) )
         add_user_meta( $user_id, 'ushop_kirki_plugin_dismissed', 'true', true );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function cfwc_create_custom_field() {
-    $sub_title = array(
-        'id'            => 'sub_title',
-        'label'         => __( 'Secondary Name', 'cfwc' ),
-        'class'					=> 'cfwc-custom-field'
-    );
-
-    woocommerce_wp_text_input( $sub_title );
-
-    $tertiary = array(
-        'id'            => 'tertiary',
-        'label'         => __( 'Tertiary Name', 'cfwc' ),
-        'class'					=> 'cfwc-custom-field'
-    );
-
-    woocommerce_wp_text_input( $tertiary );
-}
-add_action( 'woocommerce_product_options_inventory_product_data', 'cfwc_create_custom_field' );
-
-
-/**
- * Save the custom field
- * @since 1.0.0
- */
-function cfwc_save_custom_field( $post_id ) {
-    $product = wc_get_product( $post_id );
-
-    $sub_title = isset( $_POST['sub_title'] ) ? $_POST['sub_title'] : '';
-    $tertiary = isset( $_POST['tertiary'] ) ? $_POST['tertiary'] : '';
-
-    $product->update_meta_data( 'sub_title', sanitize_text_field( $sub_title ),'_title' );
-    $product->update_meta_data( 'tertiary', sanitize_text_field( $tertiary ),'_tertiary' );
-    $product->save();
-
-
-}
-add_action( 'woocommerce_process_product_meta', 'cfwc_save_custom_field' );
-
-
-
-add_action( 'woocommerce_after_shop_loop_item_title', 'bbloomer_custom_action', 15 );
-function bbloomer_custom_action() {
-
-
-// Get the product price (from this course ID):
-    $sub_title = get_post_meta('1864', 'sub_title_title', true);
-    $tertiary = get_post_meta('1864', 'tertiary_tertiary', true);
-
-    echo '<h5>'.$sub_title.'</h5><h6>'.$tertiary.'</h6>';
 }
