@@ -56,7 +56,7 @@ class Ushop_Trading_Products extends Widget_Base {
      */
 
     public function get_icon() {
-        return 'fa fa-file-image';
+        return 'fa fa-product-hunt';
     }
 
     /**
@@ -126,7 +126,7 @@ class Ushop_Trading_Products extends Widget_Base {
         $this->add_control(
             'ushop_trading_product_settings',
             [
-                'label' => __( 'Product Settings', 'plugin-name' ),
+                'label' => __( 'Product Settings', 'ushop' ),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]

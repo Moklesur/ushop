@@ -56,7 +56,7 @@ class Ushop_Hero_Banner extends Widget_Base {
      */
 
     public function get_icon() {
-        return 'fa fa-file-image';
+        return 'fa fa-picture-o';
     }
 
     /**

@@ -46,7 +46,7 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
      */
 
     public function get_icon() {
-        return 'fa fa-file-image';
+        return 'fa fa-cubes';
     }
 
     /**
@@ -77,7 +77,7 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __( 'Content', 'plugin-name' ),
+                'label' => __( 'Content', 'ushop' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -137,7 +137,7 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'content_style',
             [
-                'label' => __( 'STYLE', 'plugin-name' ),
+                'label' => __( 'STYLE', 'ushop' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -227,7 +227,7 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
         $this->add_control(
             'font_divider',
             [
-                'label' => __( 'Font Size', 'plugin-name' ),
+                'label' => __( 'Font Size', 'ushop' ),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
