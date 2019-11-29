@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Blog block
+ * Hero Banner
  *
  * @since 1.0.0
  */

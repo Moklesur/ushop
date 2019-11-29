@@ -146,6 +146,7 @@ add_action( 'widgets_init', 'ushop_widgets_init' );
  * Load Site Origin Bundle
  */
 if ( class_exists( 'SiteOrigin_Widget' ) ) {
+
     require get_template_directory() . '/inc/widgets/widget-services.php';
     require get_template_directory() . '/inc/widgets/widget-treading-products.php';
     require get_template_directory() . '/inc/widgets/widget-category-filter.php';
@@ -154,6 +155,7 @@ if ( class_exists( 'SiteOrigin_Widget' ) ) {
     require get_template_directory() . '/inc/widgets/widgets.php';
 
 	require get_template_directory() . '/inc/widgets/so-widget.php';
+
 }
 
 /**
@@ -165,6 +167,8 @@ function bring_back_elementor_widgets() {
         require get_template_directory() . '/plugin/hero-banner.php';
         require get_template_directory() . '/plugin/services-icon.php';
         require get_template_directory() . '/plugin/treading-products.php';
+        require get_template_directory() . '/plugin/product-category-tab.php';
+        require get_template_directory() . '/plugin/latest-blog.php';
     }
 
 }

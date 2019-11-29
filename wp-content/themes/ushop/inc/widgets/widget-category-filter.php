@@ -23,9 +23,7 @@ class uShop_Widget_Category_Filter extends WP_Widget {
         $title = ( !empty($instance['title']) ) ? $instance['title'] : '';
         $limit = ( ! empty( $instance['limit'] ) ) ? absint( $instance['limit'] ) : 8;
         $columns = ( ! empty( $instance['columns'] ) ) ? absint( $instance['columns'] ) : 4;
-
         $select_category  = isset( $instance['select_category'] ) ? array_map( 'esc_attr', $instance['select_category'] ) : '';
-
 
         echo $args['before_widget']; ?>
         <div class="widget-category-filter woo-img-center add-btn-hover text-center">

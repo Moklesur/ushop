@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Blog block
+ * Treading Product
  *
  * @since 1.0.0
  */
@@ -279,12 +279,15 @@ class Ushop_Trading_Products extends Widget_Base {
         <div class="widget-trending-products elementor-trending-products woo-img-center add-btn-hover">
             <h2><?php echo esc_html( $settings['title'] ); ?></h2>
             <div class="trending-products-contents">
-                <?php echo do_shortcode( '[products limit="' . $limit . '" class="treading'. $slider_class .'" best_selling="true" ]' );  ?>
+                <?php
+                echo do_shortcode( '[products limit="' . $limit . '" class="treading'. $slider_class .'" best_selling="true" ]' );
+                ?>
                 <a href="<?php echo esc_url( $settings['button_url']['url'] ); ?>" <?php echo esc_attr( $target ) .' '. esc_attr( $nofollow ); ?> class="view-all text-uppercase"><?php echo esc_html( $settings['button_text'] ); ?></a>
             </div>
         </div>
         <?php
     }
+    protected function _content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Ushop_Trading_Products() );

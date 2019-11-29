@@ -18,6 +18,19 @@ ushop is distributed under the terms of the GNU GPL
 
 Ushop is a full featured e-commarce wordpress theme specially build for any kind of online store. Theme is compatible with woocommarce. Fully responsive layout that supports every device. Clean, modern and selling oriented design comes with full customisation options like header styles, unlimited color, woocommerce settings, breadcrumb, product settings, blog options and many more.
 
+== Frequently Asked Questions ==
+
+Does this theme support any plugins?
+->Contact Form 7, Elementor page builder, Page Builder by SiteOrigin and many more.
+
+== Changelog ==
+
+= 1.19 - Nov 29 2019 =
+* Elementor page builder supported
+
+= 1.0 - March 17 2018 =
+* Initial release
+
 == Installation ==
 
 1. In your admin panel, go to Appearance > Themes and click the Add New button.

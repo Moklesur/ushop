@@ -2,6 +2,12 @@
 
 namespace Elementor;
 
+/**
+ * Service Icon
+ *
+ * @since 1.0.0
+ */
+
 class Ushop_Service_Icon extends \Elementor\Widget_Base {
 
     /**
@@ -311,17 +317,14 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
             ]
         );
         $this->end_controls_section();
-
     }
-
     protected function render() {
         $settings = $this->get_settings_for_display();
         if ( $settings['list'] ) {
             ?>
             <div class="widget-services elementor-service-icon row">
-
                 <?php
-                foreach (  $settings['list'] as $item ) {
+                foreach ( $settings['list'] as $item ) {
                     ?>
                     <div class="col-lg-4 col-md-4 col-12 mt-30 position-relative">
                         <div class="mb-3">
@@ -337,18 +340,14 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
                     <?php
                 }
                 ?>
-
             </div>
             <?php
-
         }
     }
-
     protected function _content_template() {
         ?>
         <# if ( settings.list.length ) { #>
         <div class="widget-services text-center row">
-
             <# _.each( settings.list, function( item ) { #>
             <div class="col-lg-4 col-md-4 col-12 mt-30 position-relative">
                 <div class="mb-3"><i class="{{ item.icon }}" aria-hidden="true"></i></div>
@@ -360,11 +359,9 @@ class Ushop_Service_Icon extends \Elementor\Widget_Base {
                 </div>
             </div>
             <# }); #>
-
         </div>
         <# } #>
         <?php
     }
 }
-
 Plugin::instance()->widgets_manager->register_widget_type( new Ushop_Service_Icon() );
