@@ -161,7 +161,7 @@ if ( class_exists( 'SiteOrigin_Widget' ) ) {
 /**
  * Elementor widgets
  */
-function bring_back_elementor_widgets() {
+function ushop_elementor_widgets() {
 
     if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
         require get_template_directory() . '/plugin/hero-banner.php';
@@ -172,7 +172,7 @@ function bring_back_elementor_widgets() {
     }
 
 }
-add_action( 'elementor/widgets/widgets_registered', 'bring_back_elementor_widgets' );
+add_action( 'elementor/widgets/widgets_registered', 'ushop_elementor_widgets' );
 
 /**
  * @param $elements_manager
@@ -276,10 +276,17 @@ require get_template_directory() . '/inc/breadcrumb.php';
 /**
  * woocommerce support
  */
+
 function ushop_woocommerce_support() {
+
 	add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-slider' );
+    add_theme_support( 'woocommerce', array(
+        'gallery_thumbnail_image_width' => 600,
+    ) );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-zoom' );
+
 }
 add_action( 'after_setup_theme', 'ushop_woocommerce_support' );
 /**
@@ -309,8 +316,8 @@ function ushop_active_plugins() {
 			'required'  => false,
 		),
 		array(
-			'name'      => 'Page Builder by SiteOrigin',
-			'slug'      => 'siteorigin-panels',
+			'name'      => 'Elementor Page Builder',
+			'slug'      => 'elementor',
 			'required'  => false,
 		),
 		array(
@@ -357,4 +364,13 @@ function ushop_kirki_plugin_dismissed() {
     $user_id = get_current_user_id();
     if ( isset( $_GET['ushop_kirki_dismissed'] ) )
         add_user_meta( $user_id, 'ushop_kirki_plugin_dismissed', 'true', true );
+}
+
+/**
+ * 5.02 version for add script tag
+ */
+if ( ! function_exists( 'wp_body_open' ) ) {
+    function wp_body_open() {
+        do_action( 'wp_body_open' );
+    }
 }

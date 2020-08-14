@@ -2,17 +2,7 @@
 if ( ! class_exists( 'WooCommerce' ) ) {
     return;
 }
-/**
- * Gallery WC Support
- */
-function ushop_gallery_thumns_wc_support() {
 
-    add_theme_support( 'woocommerce', array(
-        'gallery_thumbnail_image_width' => 600,
-    ) );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-}
-add_action( 'after_setup_theme', 'ushop_gallery_thumns_wc_support' );
 /**
  * Remove cross-sells at cart
  */
@@ -24,6 +14,19 @@ function ushop_woocommerce_styling_deregister() {
     add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
 add_action( 'wp', 'ushop_woocommerce_styling_deregister' );
+
+/**
+ * Flex Slider
+ */
+add_filter( 'woocommerce_single_product_carousel_options', 'ushop_flexslider_direction_nav' );
+function ushop_flexslider_direction_nav( $options ) {
+
+    $options['directionNav'] = true;
+    $options['controlNav'] = 'thumbnails';
+    $options['animationLoop'] = true;
+
+    return $options;
+}
 
 /**
  * @param $classes
@@ -100,11 +103,10 @@ function ushop_product_summary_end() {
     echo '</div>';
 }
 
-
 /**
  * Single gallery thumbs navigation
  */
-add_action( 'woocommerce_before_single_product_summary', 'ushop_single_gallery_query', 21 );
+//add_action( 'woocommerce_before_single_product_summary', 'ushop_single_gallery_query', 21 );
 function ushop_single_gallery_query() { ?>
     <div class="product-thumbs">
         <?php

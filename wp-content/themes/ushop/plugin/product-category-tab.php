@@ -163,7 +163,7 @@ class Ushop_Product_Category extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => __( 'Typography', 'plugin-domain' ),
+                'label' => __( 'Typography', 'ushop' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .elementor-widget-category-filter .title-heading',
             ]

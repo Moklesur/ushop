@@ -1,8 +1,8 @@
 === ushop ===
 
 Contributors: themetim
-Requires at least: 4.0
-Tested up to: 4.7
+Requires at least: 5.6
+Tested up to: 5.4.2
 Stable tag: 1.0.0
 Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, theme-options
 
@@ -24,6 +24,9 @@ Does this theme support any plugins?
 ->Contact Form 7, Elementor page builder, Page Builder by SiteOrigin and many more.
 
 == Changelog ==
+
+= 1.20 - Aug 14 2020 =
+* product thumbs slider ( slick slider to flexslider )
 
 = 1.19 - Nov 29 2019 =
 * Elementor page builder supported

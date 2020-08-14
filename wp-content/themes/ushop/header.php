@@ -10,7 +10,7 @@
  */
 
 ?>
-<!doctype html>
+    <!doctype html>
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -21,7 +21,10 @@
     </head>
 
 <body <?php body_class(); ?>>
+    <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ushop' ); ?></a>
+<?php wp_body_open(); ?>
     <a href="#" id="back-to-top" title="<?php esc_attr_e( 'Back to top', 'ushop' ); ?>">&uarr;</a>
+
 <div class="layout">
 
     <header id="masthead" class="header">
