@@ -3,7 +3,7 @@
 Contributors: themetim
 Requires at least: 5.6
 Tested up to: 5.4.2
-Stable tag: 1.0
+Stable tag: 2.0
 Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, left-sidebar, right-sidebar, custom-colors, custom-header, theme-options
 
 == License ==
@@ -24,6 +24,11 @@ Does this theme support any plugins?
 ->Contact Form 7, Elementor page builder, Page Builder by SiteOrigin and many more.
 
 == Changelog ==
+
+= 2.0 - Sep 18 2022 =
+* bug fix
+* elementor update
+* core plugins added
 
 = 1.21 - Apr 05 2021 =
 * remove unnecessary code & fine
