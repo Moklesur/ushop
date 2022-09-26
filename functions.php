@@ -127,18 +127,6 @@ function ushop_widgets_init() {
 			'after_title'   => '</h4>',
 		) );
 	}
-	// SO Plugin
-    if ( class_exists( 'SiteOrigin_Widget' ) ) {
-        // Register Widgets
-        register_widget('uShop_Widget_Services');
-        if (class_exists('WooCommerce')) {
-            register_widget('uShop_Widget_Trending_Products');
-            register_widget('uShop_Widget_Category_Filter');
-            register_widget('uShop_Widget_Category_List');
-        }
-        register_widget('uShop_Widget_Feature_Box');
-        register_widget('uShop_Widget_Recent_Blog');
-    }
 }
 add_action( 'widgets_init', 'ushop_widgets_init' );
 
